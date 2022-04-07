@@ -1,10 +1,7 @@
+import Pages from './pages';
 import './assets/style/reset.css';
 function App() {
-  return (
-    <div>
-      <h1>hello world</h1>
-    </div>
-  );
+  return <Pages />;
 }
 
 export default App;
