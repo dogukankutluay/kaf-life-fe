@@ -18,7 +18,6 @@
   // filter: drop-shadow(0px 5px 10px #ffe262);
   // backdrop-filter: blur(24px);
   border: 1px solid $color-orange;
-
   border-radius: 24px;
 }
 //buttons
@@ -39,6 +38,7 @@
   @extend %btn;
   background: $color-orange;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: helveticaBold;
 }
 %btn-secondary {
   @extend %btn;
@@ -54,12 +54,16 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: helveticaBold;
 }
-//form elements
-%form-title {
+
+%title {
   color: $color-dark-green;
   font-family: helveticaBold;
   font-size: 2rem;
   line-height: 2rem;
+}
+//form elements
+%form-title {
+  @extend %title;
 }
 %form-subtitle {
   color: #39505e;

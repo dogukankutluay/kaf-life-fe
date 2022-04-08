@@ -1,0 +1,52 @@
+@import 'assets/style/_global.module.scss';
+@import 'assets/style/_variables.module.scss';
+.checkMail {
+  &Wrapper {
+    @extend %wrapper;
+  }
+  &Container {
+    display: flex;
+    flex-direction: column;
+    @extend %container;
+    box-sizing: border-box;
+    padding: 3rem;
+    align-items: center;
+    img {
+      width: 25%;
+    }
+    h1 {
+      @extend %title;
+      font-size: 2.5rem;
+      margin-block: 1.2rem;
+    }
+    p {
+      font-family: helveticaRegular;
+      margin-block: 1rem;
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+      color: #39505e;
+      letter-spacing: 0em;
+      text-align: center;
+      max-width: 84%;
+    }
+    button {
+      @extend %btn-primary;
+      padding: 0.4rem 5rem;
+      margin: 1rem;
+    }
+    svg {
+      &:nth-of-type(1) {
+        align-self: flex-start;
+      }
+      &:nth-of-type(2) {
+        width: 100px;
+        height: 100px;
+        aspect-ratio: 1;
+        align-self: flex-end;
+      }
+    }
+    footer {
+      align-self: flex-start;
+    }
+  }
+}

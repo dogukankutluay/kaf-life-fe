@@ -1,6 +1,6 @@
 @import 'assets/style/_variables.module.scss';
 @import 'assets/style/_global.module.scss';
-.reset {
+.verify {
   &Wrapper {
     @extend %wrapper;
   }
@@ -71,7 +71,7 @@
   }
 }
 .btnConfirm {
-  @extend %btn-primary;
+  @extend %btn-success;
   font-family: helveticaRegular;
   margin-block: 1.5rem;
 }
