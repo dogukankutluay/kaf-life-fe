@@ -1,0 +1,39 @@
+@import 'assets/style/_variables.module.scss';
+.splash {
+  &Wrapper,
+  &Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &Wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: #d3f6f9;
+  }
+  &Container {
+    width: 90%;
+    height: 90%;
+    background: radial-gradient(
+      156.59% 339.99% at 50% 43.67%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 97.27%
+    );
+    border: 1px solid #fbfcdb;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 5px 10px #fbfcdb);
+    backdrop-filter: blur(24px);
+    border-radius: 24px;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    h2,
+    h4 {
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 2.5rem;
+      color: $color-dark-green;
+      font-family: helveticaMedium;
+    }
+  }
+}

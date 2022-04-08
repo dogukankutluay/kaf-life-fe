@@ -1,1 +1,23 @@
+//colors
+$color-green: #6bc184;
+$color-orange: #ffe262;
+$color-purple: #8c9bfd;
+$color-blue: #5b9beb;
+$color-gray: #f4f5f4;
+$color-white: #ffffff;
+$color-light-orange: #fdf2c5;
+$color-dark-green: #083439;
 
+//fonts
+@font-face {
+  font-family: helveticaRegular;
+  src: url('../fonts/helvetica/HelveticaNeueMed.ttf');
+}
+@font-face {
+  font-family: helveticaMedium;
+  src: url('../fonts/helvetica/HelveticaNeue\ Medium.ttf');
+}
+@font-face {
+  font-family: helveticaBold;
+  src: url('../fonts/helvetica/Helvetica\ Neu\ Bold.ttf');
+}

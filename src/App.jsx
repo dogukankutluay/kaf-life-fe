@@ -1,5 +1,5 @@
 import Pages from './pages';
-import './assets/style/reset.css';
+import './assets/style/reset.scss';
 function App() {
   return <Pages />;
 }

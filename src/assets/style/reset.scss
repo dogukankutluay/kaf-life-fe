@@ -24,7 +24,11 @@ ul[role='list'],
 ol[role='list'] {
   list-style: none;
 }
-
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
@@ -41,12 +45,17 @@ body {
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
-
+a {
+  text-decoration: none;
+}
 /* Make images easier to work with */
 img,
 picture {
   max-width: 100%;
   display: block;
+}
+html {
+  font-size: 16px;
 }
 
 /* Inherit fonts for inputs and buttons */
