@@ -2,34 +2,12 @@
 @import 'assets/style/_global.module.scss';
 .signin {
   &Wrapper {
-    margin: 0 auto;
-    width: 80%;
-    padding-block: 2rem;
+    @extend %wrapper;
   }
   &Container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background: radial-gradient(
-      156.59% 339.99% at 50% 43.67%,
-      $color-white 0%,
-      rgba(255, 255, 255, 0) 97.27%
-    );
-    // filter: drop-shadow(0px 5px 10px #ffe262);
-    // backdrop-filter: blur(24px);
-    border: 1px solid #ffe262;
+    @extend %container;
+  }
 
-    border-radius: 24px;
-  }
-  &Navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    select {
-      width: fit-content;
-      height: fit-content;
-    }
-  }
   &Content {
     width: 100%;
     padding: 2.5rem;
@@ -116,4 +94,5 @@
 .btnReset {
   @extend %btn-secondary;
   font-family: helveticaRegular;
+  display: block;
 }

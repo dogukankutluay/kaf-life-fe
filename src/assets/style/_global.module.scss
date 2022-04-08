@@ -1,5 +1,26 @@
 @import './variables.module';
 
+//containers
+%wrapper {
+  margin: 0 auto;
+  width: 80%;
+  padding-block: 2rem;
+}
+%container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: radial-gradient(
+    156.59% 339.99% at 50% 43.67%,
+    $color-white 0%,
+    rgba(255, 255, 255, 0) 97.27%
+  );
+  // filter: drop-shadow(0px 5px 10px #ffe262);
+  // backdrop-filter: blur(24px);
+  border: 1px solid $color-orange;
+
+  border-radius: 24px;
+}
 //buttons
 %btn {
   height: 3.375rem;
@@ -8,6 +29,7 @@
   border: none;
   cursor: pointer;
   font-size: 1.25rem;
+  border-radius: 14px;
   &:focus {
     border: 1px solid gray;
   }
@@ -17,37 +39,42 @@
   @extend %btn;
   background: $color-orange;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 14px;
 }
 %btn-secondary {
   @extend %btn;
   background: #fffbec;
   border: 1px solid #fdf2c5;
-  box-sizing: border-box;
-  border-radius: 14px;
+  color: $color-gray;
+  font-family: helveticaBold;
 }
-
+%btn-success {
+  @extend %btn;
+  background-color: #00b147;
+  color: $color-white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: helveticaBold;
+}
 //form elements
 %form-title {
   color: $color-dark-green;
   font-family: helveticaBold;
-  font-size: 3.125rem;
-  line-height: 3.125rem;
+  font-size: 2rem;
+  line-height: 2rem;
 }
 %form-subtitle {
   color: #39505e;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-family: helveticaRegular;
   font-weight: bold;
-  line-height: 1.25rem;
+  line-height: 1rem;
   padding: 0;
 }
 %form-input-label {
   padding: 0;
   color: $color-dark-green;
   font-family: helveticaBold;
-  font-size: 1.25rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1rem;
   color: #022123;
   margin-bottom: 0.875rem;
 }
@@ -55,7 +82,7 @@
 %form-input {
   background-color: $color-light-orange;
   height: 3.375rem;
-  color: #a4afb0;
+  color: $color-gray;
   width: 100%;
   font-size: 0.875rem;
   border-radius: 0.875rem;

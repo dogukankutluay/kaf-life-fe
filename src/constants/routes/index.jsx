@@ -1,6 +1,7 @@
 import Signin from 'pages/signin';
 import Signup from 'pages/signup';
 import Home from 'pages/home';
+import ResetPassword from 'pages/reset';
 const AllRoutes = [
   {
     path: '/',
@@ -17,6 +18,12 @@ const AllRoutes = [
   {
     path: '/signup',
     component: Signup,
+    exact: true,
+    protected: false,
+  },
+  {
+    path: '/reset',
+    component: ResetPassword,
     exact: true,
     protected: false,
   },

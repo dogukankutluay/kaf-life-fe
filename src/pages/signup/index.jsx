@@ -1,8 +1,9 @@
-import { KafLifeTextLogo, KafLifeLogo } from 'assets/icons';
+import { KafLifeLogo } from 'assets/icons';
 import AnimatedBg from 'components/animatedbg';
 import Footer from 'components/footer';
 import Header from 'components/header';
-import React from 'react';
+import Navbar from 'components/navbar';
+import { Link } from 'react-router-dom';
 import style from './signup.module.scss';
 
 export default function Signup() {
@@ -13,19 +14,12 @@ export default function Signup() {
         <div className={style.signupContainer}>
           {/* left side */}
           <section className={style.signupContent}>
-            {/* navbar */}
-            <nav className={style.signupNavbar}>
-              <KafLifeTextLogo />
-              <select name='' id=''>
-                <option value=''>English</option>
-                <option value=''>Turkish</option>
-              </select>
-            </nav>
+            <Navbar />
             {/* form */}
             <form action='' className={style.signupForm}>
               <h1 className={style.signupFormTitle}>Sign Up</h1>
               <p className={style.signupFormSubtitle}>
-                Do you have an account? <a href='/signin'>Sign in</a>{' '}
+                Do you have an account? <Link to='/signin'>Sign in</Link>{' '}
               </p>
               <aside>
                 <div className={style.formItem}>
@@ -92,7 +86,6 @@ export default function Signup() {
                 <button className={style.btnConfirm}>Confirm</button>
               </aside>
             </form>
-            {/*form footer */}
             <Footer />
           </section>
           {/* right side */}

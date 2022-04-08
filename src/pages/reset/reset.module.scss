@@ -1,19 +1,13 @@
 @import 'assets/style/_variables.module.scss';
 @import 'assets/style/_global.module.scss';
-.signup {
+.reset {
   &Wrapper {
     @extend %wrapper;
   }
   &Container {
     @extend %container;
   }
-
   &Content {
-    aside {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
     width: 100%;
     padding: 2.5rem;
     &:nth-of-type(1) {
@@ -26,36 +20,22 @@
       border-bottom-right-radius: 1.5rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+
+      img {
+        object-fit: contain;
+        width: 90%;
+      }
       svg {
         align-self: flex-end;
         width: 100px;
         height: 100px;
-        margin-top: auto;
-      }
-    }
-    &Card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: auto;
-      justify-content: space-between;
-      background-color: #daf3fc;
-      font-family: helveticaMedium;
-      color: $color-dark-green;
-      aspect-ratio: 1;
-      border-radius: 1.5rem;
-      padding: 3.5rem 3rem;
-      margin-bottom: 1rem;
-      a {
-        color: $color-blue;
       }
     }
   }
   &Form {
+    padding: 3rem;
     display: flex;
     flex-direction: column;
-    padding: 3rem;
     &Title {
       @extend %form-title;
       margin-bottom: 0.2rem;
@@ -90,32 +70,10 @@
     border: none;
   }
 }
-.formCheckbox {
-  margin-block: 0.5rem;
-  display: flex;
-
-  input {
-    width: 20px;
-    height: 20px;
-  }
-  span {
-    width: 95%;
-    color: $color-gray;
-    font-size: 1.125rem;
-    font-family: helveticaRegular;
-    margin-left: 0.5rem;
-  }
-}
-.btnCancel,
-.btnConfirm {
-  font-family: helveticaBold;
-  width: 100%;
-}
-.btnCancel {
-  @extend %btn-secondary;
-  color: $color-gray;
-  margin: 1rem 0;
-}
 .btnConfirm {
   @extend %btn-success;
+  margin-block: 1.5rem;
+}
+.btnBack {
+  @extend %btn-secondary;
 }

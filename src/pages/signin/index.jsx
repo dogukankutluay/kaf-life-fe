@@ -2,14 +2,11 @@ import React from 'react';
 import AnimatedBg from 'components/animatedbg';
 import style from './signin.module.scss';
 
-import {
-  KafLifeLogo,
-  KafLifeTextLogo,
-  MailIcon,
-  PasswordIcon,
-} from 'assets/icons';
+import { KafLifeLogo, MailIcon, PasswordIcon } from 'assets/icons';
 import Header from 'components/header';
 import Footer from 'components/footer';
+import Navbar from 'components/navbar';
+import { Link } from 'react-router-dom';
 
 export default function Signin() {
   return (
@@ -19,19 +16,12 @@ export default function Signin() {
         <div className={style.signinContainer}>
           {/* left side */}
           <section className={style.signinContent}>
-            {/* navbar */}
-            <nav className={style.signinNavbar}>
-              <KafLifeTextLogo />
-              <select name='' id=''>
-                <option value=''>English</option>
-                <option value=''>Turkish</option>
-              </select>
-            </nav>
+            <Navbar />
             {/* form */}
             <form action='' className={style.signinForm}>
               <h1 className={style.signinFormTitle}>Login</h1>
               <p className={style.signinFormSubtitle}>
-                Don’t have an account yet? <a href='/signup'>Sign up</a>{' '}
+                Don’t have an account yet? <Link to='/signup'>Sign up</Link>{' '}
               </p>
               <div className={style.formItem}>
                 <legend>Email / Mobile</legend>
