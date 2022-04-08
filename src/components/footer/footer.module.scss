@@ -1,0 +1,29 @@
+@import 'assets/style/_variables.module.scss';
+.footerWrapper {
+  display: flex;
+  list-style: none;
+  gap: 2.25rem;
+  li a {
+    display: block;
+    font-family: helveticaRegular;
+    font-size: 1.125rem;
+    color: $color-gray;
+  }
+  li {
+    &:nth-child(2) {
+      position: relative;
+
+      &::before {
+        position: absolute;
+
+        content: '';
+        left: -10px;
+        top: 10px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: $color-gray;
+      }
+    }
+  }
+}

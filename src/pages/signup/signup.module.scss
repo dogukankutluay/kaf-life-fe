@@ -1,6 +1,6 @@
 @import 'assets/style/_variables.module.scss';
 @import 'assets/style/_global.module.scss';
-.signin {
+.signup {
   &Wrapper {
     margin: 0 auto;
     width: 80%;
@@ -12,12 +12,12 @@
     width: 100%;
     background: radial-gradient(
       156.59% 339.99% at 50% 43.67%,
-      $color-white 0%,
+      #ffffff 0%,
       rgba(255, 255, 255, 0) 97.27%
     );
     // filter: drop-shadow(0px 5px 10px #ffe262);
     // backdrop-filter: blur(24px);
-    border: 1px solid #ffe262;
+    border: 1px solid $color-orange;
 
     border-radius: 24px;
   }
@@ -31,6 +31,11 @@
     }
   }
   &Content {
+    aside {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
     width: 100%;
     padding: 2.5rem;
     &:nth-of-type(1) {
@@ -43,22 +48,36 @@
       border-bottom-right-radius: 1.5rem;
       display: flex;
       flex-direction: column;
-
-      img {
-        object-fit: contain;
-        width: 90%;
-      }
+      justify-content: center;
       svg {
         align-self: flex-end;
         width: 100px;
         height: 100px;
+        margin-top: auto;
+      }
+    }
+    &Card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: auto;
+      justify-content: space-between;
+      background-color: #daf3fc;
+      font-family: helveticaMedium;
+      color: $color-dark-green;
+      aspect-ratio: 1;
+      border-radius: 1.5rem;
+      padding: 3.5rem 3rem;
+      margin-bottom: 1rem;
+      a {
+        color: $color-blue;
       }
     }
   }
   &Form {
-    padding: 3rem;
     display: flex;
     flex-direction: column;
+    padding: 3rem;
     &Title {
       @extend %form-title;
       margin-bottom: 0.2rem;
@@ -89,8 +108,8 @@
     background-color: transparent;
     width: 100%;
     outline: none;
-    border: none;
     color: $color-gray;
+    border: none;
   }
 }
 .formCheckbox {
@@ -102,18 +121,25 @@
     height: 20px;
   }
   span {
+    width: 95%;
     color: $color-gray;
     font-size: 1.125rem;
     font-family: helveticaRegular;
     margin-left: 0.5rem;
   }
 }
-.btnLogin {
-  @extend %btn-primary;
-  margin: 1rem 0;
-  font-family: helveticaRegular;
+.btnCancel,
+.btnConfirm {
+  font-family: helveticaBold;
+  width: 100%;
 }
-.btnReset {
+.btnCancel {
   @extend %btn-secondary;
-  font-family: helveticaRegular;
+  color: $color-gray;
+  margin: 1rem 0;
+}
+.btnConfirm {
+  @extend %btn-primary;
+  background-color: #00b147;
+  color: $color-white;
 }

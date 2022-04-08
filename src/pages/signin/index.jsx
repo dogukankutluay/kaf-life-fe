@@ -9,12 +9,13 @@ import {
   PasswordIcon,
 } from 'assets/icons';
 import Header from 'components/header';
+import Footer from 'components/footer';
+
 export default function Signin() {
   return (
     <AnimatedBg>
       <div className={style.signinWrapper}>
         <Header />
-
         <div className={style.signinContainer}>
           {/* left side */}
           <section className={style.signinContent}>
@@ -22,14 +23,15 @@ export default function Signin() {
             <nav className={style.signinNavbar}>
               <KafLifeTextLogo />
               <select name='' id=''>
-                <option value=''>english</option>
+                <option value=''>English</option>
+                <option value=''>Turkish</option>
               </select>
             </nav>
             {/* form */}
             <form action='' className={style.signinForm}>
               <h1 className={style.signinFormTitle}>Login</h1>
               <p className={style.signinFormSubtitle}>
-                Don’t have an account yet? <a href='#'>Sign up</a>{' '}
+                Don’t have an account yet? <a href='/signup'>Sign up</a>{' '}
               </p>
               <div className={style.formItem}>
                 <legend>Email / Mobile</legend>
@@ -59,15 +61,7 @@ export default function Signin() {
               <button className={style.btnLogin}>Login</button>
               <button className={style.btnReset}>Reset password</button>
             </form>
-            {/*form footer */}
-            <ul className={style.formFooter}>
-              <li>
-                <a href='#'>Terms & Conditions</a>
-              </li>
-              <li>
-                <a href='#'>Privacy Policy</a>
-              </li>
-            </ul>
+            <Footer />
           </section>
           {/* right side */}
           <section className={style.signinContent}>
