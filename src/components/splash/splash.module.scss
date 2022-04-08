@@ -14,26 +14,27 @@
   &Container {
     width: 90%;
     height: 90%;
+
     background: radial-gradient(
-      156.59% 339.99% at 50% 43.67%,
-      #ffffff 0%,
-      rgba(255, 255, 255, 0) 97.27%
-    );
+        156.59% 339.99% at 50% 43.67%,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0) 97.27%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
     border: 1px solid #fbfcdb;
     box-sizing: border-box;
     filter: drop-shadow(0px 5px 10px #fbfcdb);
     backdrop-filter: blur(24px);
-    border-radius: 24px;
+    border-radius: 1.5rem;
     flex-direction: column;
     justify-content: space-evenly;
 
-    h2,
-    h4 {
+    h2 {
       font-size: 2.5rem;
       font-weight: 400;
       line-height: 2.5rem;
       color: $color-dark-green;
-      font-family: helveticaMedium;
+      font-family: handoSoftRegular;
     }
   }
 }

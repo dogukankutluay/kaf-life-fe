@@ -9,7 +9,10 @@ export default function SigninSuccess() {
       <div className={style.signinSuccessWrapper}>
         <div className={style.signinSuccessContainer}>
           <KafLifeTextLogo />
-          <img src={require('../../assets/images/success_image.png')} />
+          <img
+            src={require('../../assets/images/success_image.png')}
+            alt='success'
+          />
           <h1>You have succesfully signed in!</h1>
           <p>
             Now you can easily access to your KAF Life account and start

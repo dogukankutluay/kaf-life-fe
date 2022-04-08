@@ -1,9 +1,15 @@
 import React from 'react';
 import style from './navbar.module.scss';
 import { KafLifeTextLogo } from 'assets/icons';
+import classNames from 'classnames';
 export default function Navbar() {
   return (
-    <nav className={style.navbarWrapper}>
+    <nav
+      className={classNames(
+        style.navbarWrapper,
+        'animate__animated animate__fadeInLeftBig'
+      )}
+    >
       <KafLifeTextLogo />
       <select name='' id=''>
         <option value=''>English</option>

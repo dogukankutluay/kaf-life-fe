@@ -9,9 +9,11 @@ $color-light-orange: #fdf2c5;
 $color-dark-green: #083439;
 
 //fonts
+
+//helvetica
 @font-face {
   font-family: helveticaRegular;
-  src: url('../fonts/helvetica/HelveticaNeueMed.ttf');
+  src: url('../fonts/helvetica/HelveticaNeue.ttf');
 }
 @font-face {
   font-family: helveticaMedium;
@@ -20,4 +22,14 @@ $color-dark-green: #083439;
 @font-face {
   font-family: helveticaBold;
   src: url('../fonts/helvetica/Helvetica\ Neu\ Bold.ttf');
+}
+
+//handosoft
+@font-face {
+  font-family: handoSoftRegular;
+  src: url('../fonts/hando/HandoSoft-Regular.ttf');
+}
+@font-face {
+  font-family: handosoftMedium;
+  src: url('../fonts/hando/HandoSoft-Medium.ttf');
 }

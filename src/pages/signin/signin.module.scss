@@ -11,9 +11,11 @@
   &Content {
     width: 100%;
     padding: 2.5rem;
+
     &:nth-of-type(1) {
       border-top-left-radius: 1.5rem;
       border-bottom-left-radius: 1.5rem;
+      border-right: none;
     }
     &:nth-of-type(2) {
       background: $color-light-orange;
@@ -21,6 +23,7 @@
       border-bottom-right-radius: 1.5rem;
       display: flex;
       flex-direction: column;
+      border-left: none;
 
       img {
         object-fit: contain;
@@ -82,17 +85,14 @@
   span {
     color: $color-gray;
     font-size: 1.125rem;
-    font-family: helveticaRegular;
+    font-family: handoSoftRegular;
     margin-left: 0.5rem;
   }
 }
 .btnLogin {
   @extend %btn-primary;
   margin: 1rem 0;
-  font-family: helveticaRegular;
 }
 .btnReset {
   @extend %btn-secondary;
-  font-family: helveticaRegular;
-  display: block;
 }
