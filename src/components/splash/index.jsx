@@ -8,11 +8,11 @@ export default function Splash() {
       <div
         className={classNames(
           style.splashContainer,
-          'animate__animated animate__zoomIn'
+          'animate__animated animate__zoomIn '
         )}
       >
-        <KafLifeLogo className='animate__animated animate__fadeIn animate__fadeOut  ' />
-        <h2 className='animate__animated animate__fadeInUp animate__fadeOut '>
+        <KafLifeLogo className='animate__animated animate__fadeIn animate__fadeOut delay-200  ' />
+        <h2 className='animate__animated animate__fadeInUp animate__fadeOut delay-200'>
           Welcome to KAF Life!
         </h2>
       </div>

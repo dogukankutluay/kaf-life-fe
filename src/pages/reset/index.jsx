@@ -6,8 +6,10 @@ import Navbar from 'components/navbar';
 import style from './reset.module.scss';
 import classNames from 'classnames';
 import Lottie from 'lottie-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ResetPassword() {
+  let navigate = useNavigate();
   return (
     <AnimatedBg>
       <div className={style.resetWrapper}>
@@ -21,7 +23,7 @@ export default function ResetPassword() {
               <h1
                 className={classNames(
                   style.resetFormTitle,
-                  'animate__animated animate__fadeInDown'
+                  'animate__animated animate__fadeInDown delay-200'
                 )}
               >
                 Forgot Password?
@@ -29,7 +31,7 @@ export default function ResetPassword() {
               <p
                 className={classNames(
                   style.resetFormSubtitle,
-                  'animate__animated animate__fadeInDown'
+                  'animate__animated animate__fadeInDown delay-200'
                 )}
               >
                 Please enter your email while you register.
@@ -38,7 +40,7 @@ export default function ResetPassword() {
               <div
                 className={classNames(
                   style.formItem,
-                  'animate__animated animate__fadeInLeft'
+                  'animate__animated animate__fadeInLeft delay-300'
                 )}
               >
                 <legend>Email</legend>
@@ -52,7 +54,7 @@ export default function ResetPassword() {
               <button
                 className={classNames(
                   style.btnConfirm,
-                  'animate__animated animate__fadeInUp'
+                  'animate__animated animate__fadeInUp delay-400'
                 )}
               >
                 Confirm
@@ -60,8 +62,12 @@ export default function ResetPassword() {
               <button
                 className={classNames(
                   style.btnBack,
-                  'animate__animated animate__fadeInUp'
+                  'animate__animated animate__fadeInUp delay-500'
                 )}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/signin');
+                }}
               >
                 Back
               </button>

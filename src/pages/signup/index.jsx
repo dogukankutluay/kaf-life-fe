@@ -3,12 +3,14 @@ import AnimatedBg from 'components/animatedbg';
 import Footer from 'components/footer';
 import Header from 'components/header';
 import Navbar from 'components/navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import style from './signup.module.scss';
 import classNames from 'classnames';
 import Lottie from 'lottie-react';
 import SigninLottie from 'assets/animations/SigninLottie.json';
+
 export default function Signup() {
+  let navigate = useNavigate();
   return (
     <AnimatedBg>
       <div className={style.signupWrapper}>
@@ -22,7 +24,7 @@ export default function Signup() {
               <h1
                 className={classNames(
                   style.signupFormTitle,
-                  'animate__animated animate__fadeInDown'
+                  'animate__animated animate__fadeInDown delay-200'
                 )}
               >
                 Sign Up
@@ -30,12 +32,12 @@ export default function Signup() {
               <p
                 className={classNames(
                   style.signupFormSubtitle,
-                  'animate__animated animate__fadeInDown'
+                  'animate__animated animate__fadeInDown delay-200'
                 )}
               >
                 Do you have an account? <Link to='/signin'>Sign in</Link>{' '}
               </p>
-              <aside className='animate__animated animate__fadeInLeft'>
+              <aside className='animate__animated animate__fadeInLeft delay-300'>
                 <div className={style.formItem}>
                   <legend>Name</legend>
                   <input
@@ -53,7 +55,7 @@ export default function Signup() {
                   />
                 </div>
               </aside>
-              <aside className='animate__animated animate__fadeInLeft'>
+              <aside className='animate__animated animate__fadeInLeft delay-300'>
                 <div className={style.formItem}>
                   <legend>E-mail</legend>
                   <input
@@ -74,7 +76,7 @@ export default function Signup() {
               <div
                 className={classNames(
                   style.formItem,
-                  'animate__animated animate__fadeInLeft'
+                  'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
                 <legend>Password</legend>
@@ -87,7 +89,7 @@ export default function Signup() {
               <div
                 className={classNames(
                   style.formItem,
-                  'animate__animated animate__fadeInLeft'
+                  'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
                 <legend>Confirm your password</legend>
@@ -100,7 +102,7 @@ export default function Signup() {
               <div
                 className={classNames(
                   style.formCheckbox,
-                  'animate__animated animate__fadeInLeft'
+                  'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
                 <input type='checkbox' />
@@ -110,8 +112,16 @@ export default function Signup() {
                 </span>
               </div>
               {/* form buttons */}
-              <aside className='animate__animated animate__fadeInUp'>
-                <button className={style.btnCancel}>Cancel</button>
+              <aside className='animate__animated animate__fadeInUp delay-500'>
+                <button
+                  className={style.btnCancel}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/signin');
+                  }}
+                >
+                  Cancel
+                </button>
                 <button className={style.btnConfirm}>Confirm</button>
               </aside>
             </form>
