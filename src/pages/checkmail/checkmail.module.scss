@@ -9,18 +9,16 @@
     flex-direction: column;
     @extend %container;
     box-sizing: border-box;
-    padding: 3rem;
+    padding: 2.5rem;
     align-items: center;
-    img {
-      width: 25%;
-    }
+
     h1 {
       @extend %title;
       font-size: 2.5rem;
       margin-block: 1.2rem;
     }
     p {
-      font-family: helveticaRegular;
+      font-family: handosoftRegular;
       margin-block: 1rem;
       font-size: 1.25rem;
       line-height: 1.25rem;

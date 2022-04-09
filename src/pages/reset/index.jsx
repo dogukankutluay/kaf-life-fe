@@ -5,6 +5,8 @@ import Header from 'components/header';
 import Navbar from 'components/navbar';
 import style from './reset.module.scss';
 import classNames from 'classnames';
+import Lottie from 'lottie-react';
+
 export default function ResetPassword() {
   return (
     <AnimatedBg>
@@ -79,14 +81,35 @@ export default function ResetPassword() {
                 'animate__animated animate__fadeInTopRight'
               )}
             />
-            <img
-              src={require('../../assets/images/forgot_password_card_img.png')}
-              alt='login to kay life'
+            <div
+              style={animationContainer}
               className='animate__animated animate__zoomIn'
-            />
+            >
+              <Lottie
+                {...animationOptions}
+                className='animate__animated animate__slideInRight'
+              />
+            </div>
           </section>
         </div>
       </div>
     </AnimatedBg>
   );
 }
+
+const animationOptions = {
+  animationData: require('assets/animations/ForgotPassword.json'),
+  loop: true,
+  autoPlay: true,
+};
+const animationContainer = {
+  backgroundImage: `url(${require('assets/images/lottiebg.png')})`,
+  backgroundSize: 'contain',
+  backgroundPosition: 'center',
+  width: '100%',
+  aspectRatio: 1,
+  backgroundRepeat: 'no-repeat',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+};

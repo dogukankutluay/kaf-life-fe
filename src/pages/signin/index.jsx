@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import classNames from 'classnames';
 import Welcome from 'assets/animations/Welcome.json';
-import loginBg from 'assets/images/login_bg.png';
+import lottieBg from 'assets/images/lottiebg.png';
 import { useNavigate } from 'react-router-dom';
 export default function Signin() {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ export default function Signin() {
               <h1
                 className={classNames(
                   style.signinFormTitle,
-                  'animate__animated animate__fadeInDown'
+                  'animate__animated animate__fadeInDown delay-200'
                 )}
               >
                 Login
@@ -34,7 +34,7 @@ export default function Signin() {
               <p
                 className={classNames(
                   style.signinFormSubtitle,
-                  'animate__animated animate__fadeInDown '
+                  'animate__animated animate__fadeInDown delay-200 '
                 )}
               >
                 Don’t have an account yet? <Link to='/signup'>Sign up</Link>{' '}
@@ -42,7 +42,7 @@ export default function Signin() {
               <div
                 className={classNames(
                   style.formItem,
-                  'animate__animated animate__fadeInLeft'
+                  'animate__animated animate__fadeInLeft delay-300'
                 )}
               >
                 <legend>Email / Mobile</legend>
@@ -57,7 +57,7 @@ export default function Signin() {
               <div
                 className={classNames(
                   style.formItem,
-                  'animate__animated animate__fadeInLeft'
+                  'animate__animated animate__fadeInLeft delay-300'
                 )}
               >
                 <legend>Password</legend>
@@ -69,7 +69,12 @@ export default function Signin() {
                   <PasswordIcon />
                 </div>
               </div>
-              <div className={style.formCheckbox}>
+              <div
+                className={classNames(
+                  style.formCheckbox,
+                  'animate__animated animate__fadeInLeft delay-400'
+                )}
+              >
                 <input type='checkbox' />
                 <span>Remember me</span>
               </div>
@@ -77,7 +82,7 @@ export default function Signin() {
               <button
                 className={classNames(
                   style.btnLogin,
-                  'animate__animated animate__fadeInUp'
+                  'animate__animated animate__fadeInUp delay-400'
                 )}
               >
                 Login
@@ -85,7 +90,7 @@ export default function Signin() {
               <button
                 className={classNames(
                   style.btnReset,
-                  'animate__animated animate__fadeInUp'
+                  'animate__animated animate__fadeInUp delay-500'
                 )}
                 onClick={(e) => {
                   e.preventDefault();
@@ -114,7 +119,10 @@ export default function Signin() {
               style={animationContainer}
               className='animate__animated animate__zoomIn'
             >
-              <Lottie {...animationOptions} />
+              <Lottie
+                {...animationOptions}
+                className='animate__animated animate__slideInRight'
+              />
             </div>
           </section>
         </div>
@@ -130,7 +138,7 @@ const animationOptions = {
 };
 
 const animationContainer = {
-  backgroundImage: `url(${loginBg})`,
+  backgroundImage: `url(${lottieBg})`,
   backgroundSize: 'contain',
   backgroundPosition: 'center',
   width: '100%',

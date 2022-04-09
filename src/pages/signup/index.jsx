@@ -6,6 +6,8 @@ import Navbar from 'components/navbar';
 import { Link } from 'react-router-dom';
 import style from './signup.module.scss';
 import classNames from 'classnames';
+import Lottie from 'lottie-react';
+import SigninLottie from 'assets/animations/SigninLottie.json';
 export default function Signup() {
   return (
     <AnimatedBg>
@@ -122,6 +124,13 @@ export default function Signup() {
               'animate__animated animate__slideInRight'
             )}
           >
+            <Lottie
+              {...animationOptions}
+              className={classNames(
+                style.signupLottie,
+                'animate_animated animate__fadeIn'
+              )}
+            />
             <div
               className={classNames(
                 style.signupContentCard,
@@ -131,6 +140,11 @@ export default function Signup() {
               <h2 className='animate__animated animate__fadeInDown'>
                 One Step to KAF Life
               </h2>
+              <img
+                src={require('assets/images/signin_image.jpeg')}
+                alt='sign in KAF pay card'
+                className='animate__animated animate__slideInRight'
+              />
               <p className='animate__animated animate__fadeInUp'>
                 If you want to enjoy KAF Life’s benefits, you have you have to
                 apply for KAF Pay Card first. You can <a href=''>click here</a>{' '}
@@ -149,3 +163,9 @@ export default function Signup() {
     </AnimatedBg>
   );
 }
+
+const animationOptions = {
+  animationData: SigninLottie,
+  loop: false,
+  autoPlay: true,
+};

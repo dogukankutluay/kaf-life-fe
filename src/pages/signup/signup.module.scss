@@ -13,6 +13,10 @@
       display: flex;
       gap: 1.5rem;
       align-items: center;
+      width: 100%;
+      div {
+        width: 100%;
+      }
     }
     width: 100%;
     padding: 2.5rem;
@@ -38,10 +42,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: auto;
       justify-content: space-between;
       background-color: #daf3fc;
       font-family: handosoftMedium;
+      margin-top: auto;
       color: $color-dark-green;
       aspect-ratio: 1;
       border-radius: 1.5rem;
@@ -68,6 +72,10 @@
       }
       margin-bottom: 2rem;
     }
+  }
+  &Lottie {
+    width: 20%;
+    align-self: flex-end;
   }
 }
 .formItem {
@@ -118,4 +126,48 @@
 }
 .btnConfirm {
   @extend %btn-success;
+}
+@media (max-width: $desktop) {
+  .signup {
+    &Content {
+      &:nth-of-type(2) {
+        display: none;
+      }
+    }
+    &Wrapper {
+      max-width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: $laptop) {
+  .signup {
+    &Wrapper {
+      max-width: 85%;
+    }
+    &Form {
+      padding: 2rem;
+    }
+    &Content {
+      aside {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+  }
+}
+@media (max-width: $tablet) {
+  .signup {
+    &Wrapper {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    &Form {
+      padding: 0.5rem;
+    }
+  }
 }

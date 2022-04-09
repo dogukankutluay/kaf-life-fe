@@ -78,3 +78,41 @@
 .btnBack {
   @extend %btn-secondary;
 }
+@media (max-width: $desktop) {
+  .reset {
+    &Content {
+      &:nth-of-type(2) {
+        display: none;
+      }
+    }
+    &Wrapper {
+      max-width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: $laptop) {
+  .reset {
+    &Wrapper {
+      max-width: 85%;
+    }
+    &Form {
+      padding: 2rem;
+    }
+  }
+}
+@media (max-width: $tablet) {
+  .reset {
+    &Wrapper {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    &Form {
+      padding: 0.5rem;
+    }
+  }
+}

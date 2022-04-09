@@ -27,3 +27,11 @@
     }
   }
 }
+@media (max-width: $tablet) {
+  .footerWrapper {
+    margin-top: 0.5rem;
+    li a {
+      font-size: 0.9rem;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import Pages from './pages';
-import 'animate.css';
 import './assets/style/reset.scss';
+import 'animate.css';
+import 'assets/style/animation.scss';
 function App() {
   return <Pages />;
 }

@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav
       className={classNames(
         style.navbarWrapper,
-        'animate__animated animate__fadeInLeftBig'
+        'animate__animated animate__fadeInLeftBig delay-100'
       )}
     >
       <KafLifeTextLogo />

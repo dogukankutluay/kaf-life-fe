@@ -1,0 +1,8 @@
+$delays: 100, 200, 300, 400, 500, 600, 700;
+
+@each $delay in $delays {
+  .delay-#{$delay} {
+    animation-delay: 3.5ms * $delay;
+    // animation-duration: 4.5ms * $delay;
+  }
+}
