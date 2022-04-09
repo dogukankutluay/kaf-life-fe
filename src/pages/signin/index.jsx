@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AnimatedBg from 'components/animatedbg';
 import style from './signin.module.scss';
 import { KafLifeLogo, MailIcon, PasswordIcon } from 'assets/icons';
@@ -11,8 +11,29 @@ import classNames from 'classnames';
 import Welcome from 'assets/animations/Welcome.json';
 import lottieBg from 'assets/images/lottiebg.png';
 import { useNavigate } from 'react-router-dom';
+import { auth } from 'requests';
+
+const FORM_INITIAL = {
+  email: '',
+  password: '',
+};
 export default function Signin() {
+  const [loginForm, setLoginForm] = useState(FORM_INITIAL);
   const navigate = useNavigate();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const result = await auth.login(loginForm);
+      console.log(result.data);
+    } catch (e) {
+      console.log(e.response);
+    }
+  };
+
+  const handleFormChange = (e) => {
+    setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+  };
   return (
     <AnimatedBg>
       <div className={style.signinWrapper}>
@@ -50,6 +71,9 @@ export default function Signin() {
                   <input
                     type='text'
                     placeholder='Please enter your email or mobile phone'
+                    name='email'
+                    value={loginForm.email}
+                    onChange={handleFormChange}
                   />
                   <MailIcon />
                 </div>
@@ -65,6 +89,9 @@ export default function Signin() {
                   <input
                     type='password'
                     placeholder='Please enter your password'
+                    value={loginForm.password}
+                    name='password'
+                    onChange={handleFormChange}
                   />
                   <PasswordIcon />
                 </div>
@@ -84,6 +111,7 @@ export default function Signin() {
                   style.btnLogin,
                   'animate__animated animate__fadeInUp delay-400'
                 )}
+                onClick={handleFormSubmit}
               >
                 Login
               </button>

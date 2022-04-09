@@ -72,10 +72,8 @@
 }
 .btnConfirm {
   @extend %btn-success;
-  font-family: helveticaRegular;
   margin-block: 1.5rem;
 }
 .btnBack {
   @extend %btn-secondary;
-  font-family: helveticaMedium;
 }
