@@ -10,23 +10,19 @@ export const API_CONFIG = {
     register: { url: `${BASE_URL}auth/register`, method: METHODS.POST },
     confirmRegister: {
       url: `${BASE_URL}auth/confirmRegister`,
-      method: METHODS.POST,
+      method: METHODS.GET,
     },
     forgotPassword: {
       url: `${BASE_URL}auth/forgotPassword`,
-      method: METHODS.POST,
+      method: METHODS.GET,
     },
     confirmForgotPassword: {
       url: `${BASE_URL}auth/confirmForgotPassword`,
-      method: METHODS.POST,
+      method: METHODS.GET,
     },
     changePassword: {
       url: `${BASE_URL}auth/changePassword`,
       method: METHODS.POST,
     },
-  },
-  admin: {
-    getUsers: { url: 'admin/getUsers', method: METHODS.POST },
-    userStatusAction: { url: 'admin/userStatusAction', method: METHODS.POST },
   },
 };

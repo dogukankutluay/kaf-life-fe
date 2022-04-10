@@ -6,7 +6,7 @@ export default function configureStore(preloadedState) {
   function saveToLocalStorage(state) {
     try {
       const serializedState = JSON.stringify(state);
-      localStorage.setItem('instagram_clone', serializedState);
+      localStorage.setItem('kaf_life', serializedState);
     } catch (e) {
       console.log(e);
     }
@@ -14,7 +14,7 @@ export default function configureStore(preloadedState) {
 
   function loadFromLocalStorage() {
     try {
-      const serializedState = localStorage.getItem('instagram_clone');
+      const serializedState = localStorage.getItem('kaf_life');
       if (serializedState === null) return undefined;
       return JSON.parse(serializedState);
     } catch (e) {

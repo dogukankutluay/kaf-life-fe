@@ -8,9 +8,52 @@ import style from './signup.module.scss';
 import classNames from 'classnames';
 import Lottie from 'lottie-react';
 import SigninLottie from 'assets/animations/SigninLottie.json';
+import { useState } from 'react';
+import { auth } from 'requests';
+import { useDispatch } from 'react-redux';
+import { registerAction } from 'redux/actions/authAction';
 
+const FORM_INITIAL = {
+  name: '',
+  surname: '',
+  email: '',
+  phone: '',
+  password: '',
+  confirmPassword: '',
+};
+const RESPONSE_INITIAL = {
+  success: false,
+  message: '',
+};
 export default function Signup() {
   let navigate = useNavigate();
+  let dispatch = useDispatch();
+  const [form, setForm] = useState(FORM_INITIAL);
+  const [response, setResponse] = useState(RESPONSE_INITIAL);
+  const handleFormChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setResponse(RESPONSE_INITIAL);
+
+    if (form.confirmPassword !== form.password) {
+      setResponse({ success: false, message: 'Passwords are not same' });
+      return 0;
+    }
+
+    try {
+      const result = await auth.register(form);
+      if (result.data.success) {
+        setResponse({ success: true, message: 'Successfully registered' });
+        dispatch(registerAction({ phone: form.phone }));
+        navigate('/verify/account');
+      }
+    } catch (error) {
+      console.log(error.response);
+      setResponse({ success: false, message: 'this email is already in use' });
+    }
+  };
   return (
     <AnimatedBg>
       <div className={style.signupWrapper}>
@@ -44,14 +87,20 @@ export default function Signup() {
                     className={style.formInput}
                     type='text'
                     placeholder='Please enter your name.'
+                    name='name'
+                    value={form.name}
+                    onChange={handleFormChange}
                   />
                 </div>
                 <div className={style.formItem}>
                   <legend>Surname</legend>
                   <input
+                    name='surname'
                     className={style.formInput}
                     type='text'
                     placeholder='Please enter your surname'
+                    value={form.surname}
+                    onChange={handleFormChange}
                   />
                 </div>
               </aside>
@@ -59,17 +108,23 @@ export default function Signup() {
                 <div className={style.formItem}>
                   <legend>E-mail</legend>
                   <input
+                    name='email'
                     className={style.formInput}
                     type='text'
                     placeholder='Please enter your e-mail.'
+                    value={form.email}
+                    onChange={handleFormChange}
                   />
                 </div>
                 <div className={style.formItem}>
                   <legend>Phone</legend>
                   <input
+                    name='phone'
                     className={style.formInput}
                     type='text'
                     placeholder='Please enter your phone.'
+                    value={form.phone}
+                    onChange={handleFormChange}
                   />
                 </div>
               </aside>
@@ -81,9 +136,12 @@ export default function Signup() {
               >
                 <legend>Password</legend>
                 <input
+                  name='password'
                   className={style.formInput}
                   type='password'
                   placeholder='Enter at least 8 characters with special characters.'
+                  value={form.password}
+                  onChange={handleFormChange}
                 />
               </div>{' '}
               <div
@@ -94,9 +152,12 @@ export default function Signup() {
               >
                 <legend>Confirm your password</legend>
                 <input
+                  name='confirmPassword'
                   className={style.formInput}
                   type='password'
                   placeholder='Please confirm your password.'
+                  value={form.confirmPassword}
+                  onChange={handleFormChange}
                 />
               </div>
               <div
@@ -112,6 +173,13 @@ export default function Signup() {
                 </span>
               </div>
               {/* form buttons */}
+              <span
+                className={
+                  response.success ? 'response-success' : 'response-error'
+                }
+              >
+                {response.message}
+              </span>
               <aside className='animate__animated animate__fadeInUp delay-500'>
                 <button
                   className={style.btnCancel}
@@ -122,7 +190,9 @@ export default function Signup() {
                 >
                   Cancel
                 </button>
-                <button className={style.btnConfirm}>Confirm</button>
+                <button className={style.btnConfirm} onClick={handleFormSubmit}>
+                  Confirm
+                </button>
               </aside>
             </form>
             <Footer />

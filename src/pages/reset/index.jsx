@@ -7,9 +7,28 @@ import style from './reset.module.scss';
 import classNames from 'classnames';
 import Lottie from 'lottie-react';
 import { useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
+import { auth } from 'requests';
+import { useDispatch } from 'react-redux';
+import { registerAction } from 'redux/actions/authAction';
 export default function ResetPassword() {
   let navigate = useNavigate();
+  let dispatch = useDispatch();
+  const [form, setForm] = useState({ email: '' });
+  const [response, setResponse] = useState({ success: false, message: '' });
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setResponse({ success: false, message: '' });
+    try {
+      const { data } = await auth.forgotPassword({ email: form.email });
+      if (data.success) {
+        dispatch(registerAction({ ...data.user }));
+        navigate('/check-mail/change-password');
+      }
+    } catch (error) {
+      setResponse({ success: false, message: 'user not found' });
+    }
+  };
   return (
     <AnimatedBg>
       <div className={style.resetWrapper}>
@@ -45,17 +64,23 @@ export default function ResetPassword() {
               >
                 <legend>Email</legend>
                 <div className={style.formInput}>
-                  <input type='text' placeholder='Please enter your email' />
+                  <input
+                    type='text'
+                    placeholder='Please enter your email'
+                    value={form.email}
+                    onChange={(e) => setForm({ email: e.target.value })}
+                  />
                   <MailIcon />
                 </div>
               </div>
-
+              <span className='response-error'>{response.message}</span>
               {/* form buttons */}
               <button
                 className={classNames(
                   style.btnConfirm,
                   'animate__animated animate__fadeInUp delay-400'
                 )}
+                onClick={handleFormSubmit}
               >
                 Confirm
               </button>

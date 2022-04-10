@@ -5,7 +5,11 @@ import React from 'react';
 import style from './checkmail.module.scss';
 import classNames from 'classnames';
 import Lottie from 'lottie-react';
+import { useNavigate, useParams } from 'react-router-dom';
+
 export default function CheckYourMail() {
+  let navigate = useNavigate();
+  const redirect = useParams().redirect;
   return (
     <AnimatedBg>
       <div className={style.checkMailWrapper}>
@@ -25,7 +29,10 @@ export default function CheckYourMail() {
             to SPAM folder in order to prevent communication loss, please check
             this folder too.
           </p>
-          <button className='animate__animated animate__fadeInUp'>
+          <button
+            className='animate__animated animate__fadeInUp'
+            onClick={() => navigate(`/verify/${redirect}`)}
+          >
             Continue
           </button>
           <KafLifeLogo className='animate__animated animate__fadeInRight' />

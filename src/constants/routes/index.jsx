@@ -13,7 +13,7 @@ const AllRoutes = [
     path: '/',
     component: Home,
     exact: true,
-    protected: false,
+    protected: true,
   },
   {
     path: '/signin',
@@ -46,25 +46,26 @@ const AllRoutes = [
     protected: false,
   },
   {
-    path: '/check-mail',
+    path: '/check-mail/:redirect',
     component: CheckYourMail,
     exact: true,
     protected: false,
   },
   {
-    path: '/verify',
+    path: '/verify/:type',
     component: Verify,
     exact: true,
     protected: false,
   },
+
   {
-    path: '/change-password',
+    path: '/change-password/:code',
     component: ChangePassword,
     exact: true,
     protected: false,
   },
   {
-    path: '/change-password-success',
+    path: '/password-confirm-success',
     component: PasswordConfirm,
     exact: true,
     protected: false,

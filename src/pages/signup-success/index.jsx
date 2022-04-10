@@ -2,8 +2,11 @@ import { KafLifeLogo, KafLifeTextLogo } from 'assets/icons';
 import AnimatedBg from 'components/animatedbg';
 import Footer from 'components/footer';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import style from './success.module.scss';
+
 export default function SignupSuccess() {
+  const navigate = useNavigate();
   return (
     <AnimatedBg>
       <div className={style.signupSuccessWrapper}>
@@ -15,7 +18,13 @@ export default function SignupSuccess() {
             Now you can easily access to your KAF Life account and start
             enjoying benefits
           </p>
-          <button>Continue</button>
+          <button
+            onClick={() => {
+              navigate('/signin');
+            }}
+          >
+            Continue
+          </button>
           <KafLifeLogo />
           <Footer />
         </div>

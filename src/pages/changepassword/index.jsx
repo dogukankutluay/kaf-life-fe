@@ -6,7 +6,35 @@ import Navbar from 'components/navbar';
 import style from './changepassword.module.scss';
 import Lottie from 'lottie-react';
 import classNames from 'classnames';
+import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { auth } from 'requests';
+const FORM_INITIAL = {
+  password: '',
+  passwordConfirmation: '',
+};
+const RESPONSE_INITIAL = {
+  success: false,
+  message: '',
+};
+
 export default function ChangePassword() {
+  const [form, setForm] = useState(FORM_INITIAL);
+  const code = useParams().code;
+  const [response, setResponse] = useState(RESPONSE_INITIAL);
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setResponse(RESPONSE_INITIAL);
+    try {
+      const { data } = await auth.changePassword({ ...form, code });
+      if (data.success) {
+        navigate('/password-confirm-success');
+      }
+    } catch (error) {
+      setResponse({ success: false, message: 'invalid code' });
+    }
+  };
   return (
     <AnimatedBg>
       <div className={style.changePasswordWrapper}>
@@ -45,6 +73,9 @@ export default function ChangePassword() {
                   className={style.formInput}
                   type='password'
                   placeholder='Please enter your new password'
+                  onChange={(e) =>
+                    setForm({ ...form, password: e.target.value })
+                  }
                 />
               </div>
               <div
@@ -58,15 +89,19 @@ export default function ChangePassword() {
                   className={style.formInput}
                   type='password'
                   placeholder='Enter your new password again.'
+                  onChange={(e) =>
+                    setForm({ ...form, passwordConfirmation: e.target.value })
+                  }
                 />
               </div>
-
+              <span className='response-error'>{response.message}</span>
               {/* form buttons */}
               <button
                 className={classNames(
                   style.btnConfirm,
                   'animate__animated animate__fadeInUp'
                 )}
+                onClick={handleSubmit}
               >
                 Confirm
               </button>

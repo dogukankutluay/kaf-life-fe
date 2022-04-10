@@ -2,7 +2,13 @@ import { BackArrowIcon, KafPayLogo } from 'assets/icons';
 import React from 'react';
 import style from './header.module.scss';
 import classNames from 'classnames';
-export default function Header({ onClick = () => {} }) {
+import { useNavigate } from 'react-router-dom';
+
+export default function Header() {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate('/');
+  };
   return (
     <div
       className={classNames(

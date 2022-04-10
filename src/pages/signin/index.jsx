@@ -12,22 +12,33 @@ import Welcome from 'assets/animations/Welcome.json';
 import lottieBg from 'assets/images/lottiebg.png';
 import { useNavigate } from 'react-router-dom';
 import { auth } from 'requests';
-
+import { useDispatch } from 'react-redux';
+import { redirectAction } from 'redux/actions/authAction';
 const FORM_INITIAL = {
   email: '',
   password: '',
 };
+const RESPONSE_INITIAL = {
+  success: false,
+  message: '',
+};
 export default function Signin() {
   const [loginForm, setLoginForm] = useState(FORM_INITIAL);
   const navigate = useNavigate();
+  const [response, setResponse] = useState(RESPONSE_INITIAL);
+  let dispatch = useDispatch();
   const handleFormSubmit = async (e) => {
+    setResponse(RESPONSE_INITIAL);
     e.preventDefault();
-
     try {
       const result = await auth.login(loginForm);
-      console.log(result.data);
-    } catch (e) {
-      console.log(e.response);
+      if (result.data.success) {
+        dispatch(redirectAction(result.data.redirect));
+        setResponse({ success: true, message: 'Login succeed.' });
+        navigate('/signin-success');
+      }
+    } catch (error) {
+      setResponse({ success: false, message: error.response.data.message });
     }
   };
 
@@ -106,6 +117,13 @@ export default function Signin() {
                 <span>Remember me</span>
               </div>
               {/* form buttons */}
+              <span
+                className={
+                  response.success ? 'response-success' : 'response-error'
+                }
+              >
+                {response.message}
+              </span>
               <button
                 className={classNames(
                   style.btnLogin,

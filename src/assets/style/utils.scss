@@ -1,0 +1,13 @@
+@import 'assets/style/_variables.module.scss';
+%response {
+  font-size: 1.2rem;
+  font-family: handoSoftRegular;
+}
+.response-success {
+  @extend %response;
+  color: #28a745;
+}
+.response-error {
+  @extend %response;
+  color: #dc3545;
+}

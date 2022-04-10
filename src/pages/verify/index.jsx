@@ -6,7 +6,47 @@ import Navbar from 'components/navbar';
 import style from './verify.module.scss';
 import Lottie from 'lottie-react';
 import classNames from 'classnames';
+import { useState } from 'react';
+import { auth } from 'requests';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+
+const FORM_INITIAL = {
+  code: '',
+};
+const RESPONSE_INITIAL = {
+  success: false,
+  message: '',
+};
 export default function Verify() {
+  const [form, setForm] = useState(FORM_INITIAL);
+  const { phone } = useSelector((state) => state.authReducer.user);
+  const [response, setResponse] = useState(RESPONSE_INITIAL);
+  const navigate = useNavigate();
+  const param = useParams().type;
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (param === 'account') {
+        const result = await auth.confirmRegister({ code: form.code, phone });
+        if (result.data.success) {
+          navigate('/signup-success');
+        }
+      }
+      if (param === 'change-password') {
+        const result = await auth.confirmForgotPassword({
+          code: form.code,
+          phone,
+        });
+        if (result.data.success) {
+          navigate(`/change-password/${form.code}`);
+        }
+      }
+    } catch (error) {
+      setResponse({ success: false, message: 'Code is not valid' });
+    }
+  };
   return (
     <AnimatedBg>
       <div className={style.verifyWrapper}>
@@ -45,17 +85,26 @@ export default function Verify() {
                   <input
                     type='text'
                     placeholder='Enter 6-digit code send to your verification device.'
+                    value={form.code}
+                    onChange={(e) => setForm({ code: e.target.value })}
                   />
                   <MailIcon />
                 </div>
               </div>
-
+              <span
+                className={
+                  response.success ? 'response-success' : 'response-error'
+                }
+              >
+                {response.message}
+              </span>
               {/* form buttons */}
               <button
                 className={classNames(
                   style.btnConfirm,
                   'animate__animated animate__fadeInUp'
                 )}
+                onClick={handleFormSubmit}
               >
                 Confirm
               </button>

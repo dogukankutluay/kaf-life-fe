@@ -2,8 +2,10 @@ import { KafLifeLogo, KafLifeTextLogo } from 'assets/icons';
 import AnimatedBg from 'components/animatedbg';
 import Footer from 'components/footer';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import style from './passwordconfirm.module.scss';
 export default function PasswordConfirm() {
+  const navigate = useNavigate();
   return (
     <AnimatedBg>
       <div className={style.passwordConfirmWrapper}>
@@ -15,7 +17,7 @@ export default function PasswordConfirm() {
             Now you can easily access to your KAF Life account and start
             enjoying benefits
           </p>
-          <button>Continue</button>
+          <button onClick={() => navigate('/signin')}>Continue</button>
           <KafLifeLogo />
           <Footer />
         </div>
