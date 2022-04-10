@@ -1,6 +1,5 @@
-import React from 'react';
 import style from './navbar.module.scss';
-import { KafLifeTextLogo } from 'assets/icons';
+import { FlagTr, KafLifeTextLogo, FlagEn } from 'assets/icons';
 import classNames from 'classnames';
 export default function Navbar() {
   return (
@@ -12,9 +11,25 @@ export default function Navbar() {
     >
       <KafLifeTextLogo />
       <select name='' id=''>
-        <option value=''>English</option>
-        <option value=''>Turkish</option>
+        {languages.map((lang, key) => (
+          <option value={lang.code} key={key}>
+            {lang.lang}
+          </option>
+        ))}
       </select>
     </nav>
   );
 }
+
+const languages = [
+  {
+    flag: FlagTr,
+    lang: 'Turkish',
+    code: 'tr',
+  },
+  {
+    flag: FlagEn,
+    lang: 'English',
+    code: 'en',
+  },
+];

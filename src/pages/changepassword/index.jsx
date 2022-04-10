@@ -112,6 +112,7 @@ export default function ChangePassword() {
                   style.btnBack,
                   'animate__animated animate__fadeInUp delay-500'
                 )}
+                onClick={() => navigate('/signin')}
               >
                 Back
               </button>

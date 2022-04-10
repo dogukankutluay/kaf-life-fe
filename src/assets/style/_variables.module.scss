@@ -1,5 +1,5 @@
 //colors
-$color-green: #6bc184;
+$color-green: #00b147;
 $color-orange: #ffe262;
 $color-purple: #8c9bfd;
 $color-blue: #5b9beb;
@@ -32,6 +32,10 @@ $color-dark-green: #083439;
 @font-face {
   font-family: handosoftMedium;
   src: url('../fonts/hando/HandoSoft-Medium.ttf');
+}
+@font-face {
+  font-family: handosoftBold;
+  src: url('../fonts/hando/HandoSoft-Bold.ttf');
 }
 
 // breakpoints

@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { auth } from 'requests';
 import { useDispatch } from 'react-redux';
 import { registerAction } from 'redux/actions/authAction';
-
+import { Checkbox } from 'components/checkbox';
 const FORM_INITIAL = {
   name: '',
   surname: '',
@@ -51,8 +51,10 @@ export default function Signup() {
         navigate('/verify/account');
       }
     } catch (error) {
-      console.log(error.response);
-      setResponse({ success: false, message: 'this email is already in use' });
+      setResponse({
+        success: false,
+        message: error.response.data.message || 'An error occured',
+      });
     }
   };
   return (
@@ -167,7 +169,7 @@ export default function Signup() {
                   'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
-                <input type='checkbox' />
+                <Checkbox />
                 <span>
                   Your password has to be at least 8 characters and have one
                   special character.

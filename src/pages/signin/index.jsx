@@ -14,6 +14,8 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from 'requests';
 import { useDispatch } from 'react-redux';
 import { redirectAction } from 'redux/actions/authAction';
+import { Checkbox } from 'components/checkbox';
+import Unlock from 'assets/animations/Unlock.json';
 const FORM_INITIAL = {
   email: '',
   password: '',
@@ -25,12 +27,15 @@ const RESPONSE_INITIAL = {
 export default function Signin() {
   document.title = 'Sign in';
   const [loginForm, setLoginForm] = useState(FORM_INITIAL);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [response, setResponse] = useState(RESPONSE_INITIAL);
   let dispatch = useDispatch();
   const handleFormSubmit = async (e) => {
     setResponse(RESPONSE_INITIAL);
     e.preventDefault();
+    setLoading(true);
+
     try {
       const result = await auth.login(loginForm);
       if (result.data.success) {
@@ -44,6 +49,8 @@ export default function Signin() {
         message: error.response.data.message || error.response,
       });
     }
+
+    setTimeout(() => setLoading(false), 3500);
   };
 
   const handleFormChange = (e) => {
@@ -117,7 +124,7 @@ export default function Signin() {
                   'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
-                <input type='checkbox' />
+                <Checkbox />
                 <span>Remember me</span>
               </div>
               {/* form buttons */}
@@ -135,7 +142,15 @@ export default function Signin() {
                 )}
                 onClick={handleFormSubmit}
               >
-                Login
+                {loading ? (
+                  <Lottie
+                    {...unlockAnimation}
+                    style={lottieStyle}
+                    className='animate__animated animate__zoomIn'
+                  />
+                ) : (
+                  'Login'
+                )}
               </button>
               <button
                 className={classNames(
@@ -186,7 +201,11 @@ const animationOptions = {
   loop: true,
   autoPlay: true,
 };
-
+const unlockAnimation = {
+  animationData: Unlock,
+  loop: false,
+  autoPlay: true,
+};
 const animationContainer = {
   backgroundImage: `url(${lottieBg})`,
   backgroundSize: 'contain',
@@ -198,3 +217,5 @@ const animationContainer = {
   alignItems: 'center',
   justifyContent: 'center',
 };
+
+const lottieStyle = { width: '50px', marginLeft: 'auto', marginRight: 'auto' };

@@ -1,0 +1,11 @@
+@import 'assets/style/_variables.module.scss';
+.checkbox {
+  position: relative;
+  appearance: none;
+  user-select: none;
+  -webkit-appearance: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  border: 2px solid $color-gray;
+}
