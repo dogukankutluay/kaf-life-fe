@@ -1,0 +1,14 @@
+{
+  "signin": {
+    "title": "Giriş Yap",
+    "subtitle": "Hesabın yok mu?",
+    "direct": "Kayıt ol",
+    "email": "Email / Telefon",
+    "emailPlaceholder": "Lütfen telefon numaranızı veya mailinizi girin",
+    "password": "Şifre",
+    "passwordPlaceholder": "Lüften şifrenizi girin",
+    "checkbox": "Beni hatırla",
+    "loginBtn": "Giriş",
+    "reset": "Şifremi sıfırla"
+  }
+}

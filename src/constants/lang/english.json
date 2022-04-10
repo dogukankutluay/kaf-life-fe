@@ -1,0 +1,34 @@
+{
+  "signin": {
+    "title": "Login",
+    "subtitle": "Dont have Account yet?",
+    "direct": "Sign up",
+    "email": "Email / Mobile",
+    "emailPlaceholder": "Please enter your phone number or email",
+    "password": "Password",
+    "passwordPlaceholder": "Please enter your password",
+    "checkbox": "Remember me",
+    "loginBtn": "Login",
+    "reset": "Reset password"
+  },
+  "signup": {
+    "title": "Sign up",
+    "subtitle": "Do you have an account?",
+    "direct": "Sign in",
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+    "surname": "Surname",
+    "surnamePlaceholder": "Enter your surname",
+    "email": "Email",
+    "emailPlaceholder": "Enter your mail",
+    "Phone": "Phone",
+    "phonePlaceholder": "Enter your phone",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "confirmPassword": "Confirm passsword",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "checkbox": "Your password has to be at least 8 characters and have one special character.",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  }
+}

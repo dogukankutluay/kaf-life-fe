@@ -36,6 +36,7 @@ export default function Signin() {
     e.preventDefault();
     setLoading(true);
 
+    setTimeout(() => setLoading(false), 3500);
     try {
       const result = await auth.login(loginForm);
       if (result.data.success) {
@@ -51,8 +52,6 @@ export default function Signin() {
         message: error.response.data.message || error.response,
       });
     }
-
-    setTimeout(() => setLoading(false), 3500);
   };
 
   const handleFormChange = (e) => {
