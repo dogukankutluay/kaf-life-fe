@@ -26,6 +26,7 @@ const RESPONSE_INITIAL = {
   message: '',
 };
 export default function Signup() {
+  document.title = 'Sign up';
   let navigate = useNavigate();
   let dispatch = useDispatch();
   const [form, setForm] = useState(FORM_INITIAL);
@@ -227,8 +228,8 @@ export default function Signup() {
               />
               <p className='animate__animated animate__fadeInUp'>
                 If you want to enjoy KAF Life’s benefits, you have you have to
-                apply for KAF Pay Card first. You can <a href=''>click here</a>{' '}
-                for apply.
+                apply for KAF Pay Card first. You can{' '}
+                <Link to='/signin'>click here</Link> for apply.
               </p>
             </div>
             <KafLifeLogo

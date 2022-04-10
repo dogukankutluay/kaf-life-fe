@@ -41,14 +41,16 @@ export default function ChangePassword() {
         <Header />
         <div className={style.changePasswordContainer}>
           {/* left side */}
-          <section className={style.changePasswordContent}>
+          <section
+            className={classNames(style.changePasswordContent, 'delay-300')}
+          >
             <Navbar />
             {/* form */}
             <form action='' className={style.changePasswordForm}>
               <h1
                 className={classNames(
                   style.changePasswordFormTitle,
-                  'animate__animated animate__fadeInDown'
+                  'animate__animated animate__fadeInDown delay-300'
                 )}
               >
                 Forgot Password?
@@ -56,7 +58,7 @@ export default function ChangePassword() {
               <p
                 className={classNames(
                   style.changePasswordFormSubtitle,
-                  'animate__animated animate__fadeInDown'
+                  'animate__animated animate__fadeInDown delay-300'
                 )}
               >
                 Please enter your email while you register.
@@ -65,7 +67,7 @@ export default function ChangePassword() {
               <div
                 className={classNames(
                   style.formItem,
-                  'animate__animated animate__fadeInLeft'
+                  'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
                 <legend>New Password</legend>
@@ -81,7 +83,7 @@ export default function ChangePassword() {
               <div
                 className={classNames(
                   style.formItem,
-                  'animate__animated animate__fadeInLeft'
+                  'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
                 <legend>Re-enter Password</legend>
@@ -99,7 +101,7 @@ export default function ChangePassword() {
               <button
                 className={classNames(
                   style.btnConfirm,
-                  'animate__animated animate__fadeInUp'
+                  'animate__animated animate__fadeInUp delay-500'
                 )}
                 onClick={handleSubmit}
               >
@@ -108,7 +110,7 @@ export default function ChangePassword() {
               <button
                 className={classNames(
                   style.btnBack,
-                  'animate__animated animate__fadeInUp'
+                  'animate__animated animate__fadeInUp delay-500'
                 )}
               >
                 Back

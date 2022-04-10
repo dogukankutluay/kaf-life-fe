@@ -60,7 +60,7 @@ export default function Verify() {
               <h1
                 className={classNames(
                   style.verifyFormTitle,
-                  'animate__animated animate__fadeInDown'
+                  'animate__animated animate__fadeInDown delay-200'
                 )}
               >
                 Verification Code
@@ -68,7 +68,7 @@ export default function Verify() {
               <p
                 className={classNames(
                   style.verifyFormSubtitle,
-                  'animate__animated animate__fadeInDown'
+                  'animate__animated animate__fadeInDown delay-300'
                 )}
               >
                 Enter your verification code that send to your email.
@@ -77,7 +77,7 @@ export default function Verify() {
               <div
                 className={classNames(
                   style.formItem,
-                  'animate__animated animate__fadeInLeft'
+                  'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
                 <legend>Verification Code</legend>
@@ -102,7 +102,7 @@ export default function Verify() {
               <button
                 className={classNames(
                   style.btnConfirm,
-                  'animate__animated animate__fadeInUp'
+                  'animate__animated animate__fadeInUp delay-500'
                 )}
                 onClick={handleFormSubmit}
               >
@@ -111,7 +111,7 @@ export default function Verify() {
               <button
                 className={classNames(
                   style.btnBack,
-                  'animate__animated animate__fadeInUp'
+                  'animate__animated animate__fadeInUp delay-500'
                 )}
               >
                 Back

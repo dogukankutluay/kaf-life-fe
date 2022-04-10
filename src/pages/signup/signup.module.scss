@@ -79,7 +79,8 @@
   }
 }
 .formItem {
-  margin-block: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   legend {
     @extend %form-input-label;
   }
@@ -99,7 +100,8 @@
   }
 }
 .formCheckbox {
-  margin-block: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   display: flex;
 
   input {

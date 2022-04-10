@@ -4,7 +4,8 @@
 %wrapper {
   margin: 0 auto;
   width: min(95%, $large);
-  padding-block: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 %container {
   display: flex;
@@ -66,6 +67,7 @@
 //form elements
 %form-title {
   @extend %title;
+  margin-bottom: 0.5rem;
 }
 %form-subtitle {
   color: #39505e;

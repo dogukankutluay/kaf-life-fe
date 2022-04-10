@@ -23,6 +23,7 @@ const RESPONSE_INITIAL = {
   message: '',
 };
 export default function Signin() {
+  document.title = 'Sign in';
   const [loginForm, setLoginForm] = useState(FORM_INITIAL);
   const navigate = useNavigate();
   const [response, setResponse] = useState(RESPONSE_INITIAL);
@@ -38,7 +39,10 @@ export default function Signin() {
         navigate('/signin-success');
       }
     } catch (error) {
-      setResponse({ success: false, message: error.response.data.message });
+      setResponse({
+        success: false,
+        message: error.response.data.message || error.response,
+      });
     }
   };
 

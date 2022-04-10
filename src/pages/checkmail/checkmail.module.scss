@@ -15,11 +15,14 @@
     h1 {
       @extend %title;
       font-size: 2.5rem;
-      margin-block: 1.2rem;
+      margin-top: 1.2rem;
+      margin-bottom: 1.2rem;
+      text-align: center;
     }
     p {
       font-family: handosoftRegular;
-      margin-block: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
       font-size: 1.25rem;
       line-height: 1.25rem;
       color: #39505e;
@@ -45,6 +48,22 @@
     }
     footer {
       align-self: flex-start;
+    }
+  }
+}
+@media (max-width: $desktop) {
+  .checkMail {
+    &Container {
+      padding: 1.5rem;
+      h1 {
+        font-size: 2rem;
+        line-height: 2.2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      p {
+        max-width: 90%;
+      }
     }
   }
 }

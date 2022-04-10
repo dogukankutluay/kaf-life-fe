@@ -18,6 +18,7 @@ export default function Pages() {
           key={index}
         />
       ))}
+      )
     </Routes>
   );
 }
