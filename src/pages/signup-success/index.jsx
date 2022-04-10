@@ -3,11 +3,16 @@ import classNames from 'classnames';
 import AnimatedBg from 'components/animatedbg';
 import Footer from 'components/footer';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import style from './success.module.scss';
-
+import languages from 'constants/lang';
 export default function SignupSuccess() {
   const navigate = useNavigate();
+  const lang = useSelector(
+    (state) => languages[state.preferencesReducer.language].signupSuccess
+  );
+  document.title = lang.pageTitle;
   return (
     <AnimatedBg>
       <div className={style.signupSuccessWrapper}>
@@ -24,11 +29,10 @@ export default function SignupSuccess() {
             alt='success!'
           />
           <h1 className='animate__animated animate__fadeInUp delay-300'>
-            You have succesfully signed up!
+            {lang.title}
           </h1>
           <p className='animate__animated animate__fadeInUp delay-300'>
-            Now you can easily access to your KAF Life account and start
-            enjoying benefits
+            {lang.description}
           </p>
           <button
             onClick={() => {
@@ -36,7 +40,7 @@ export default function SignupSuccess() {
             }}
             className='animate__animated animate__fadeInUp delay-500'
           >
-            Continue
+            {lang.continueBtn}
           </button>
           <KafLifeLogo className='animate__animated animate__fadeInRight delay-500' />
           <Footer />

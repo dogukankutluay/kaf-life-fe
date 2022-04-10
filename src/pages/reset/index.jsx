@@ -9,31 +9,38 @@ import Lottie from 'lottie-react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { auth } from 'requests';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerAction } from 'redux/actions/authAction';
+import fetch from 'helpers/fetch';
+import languages from 'constants/lang';
+const RESPONSE_INITIAL = {
+  success: false,
+  message: '',
+  data: {},
+  loading: false,
+};
 export default function ResetPassword() {
   let navigate = useNavigate();
   let dispatch = useDispatch();
+  const lang = useSelector(
+    (state) => languages[state.preferencesReducer.language].reset
+  );
+  document.title = lang.pageTitle;
   const [form, setForm] = useState({ email: '' });
-  const [response, setResponse] = useState({ success: false, message: '' });
+  const [response, setResponse] = useState(RESPONSE_INITIAL);
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setResponse({ success: false, message: '' });
-    try {
-      const { data } = await auth.forgotPassword({ email: form.email });
-      if (data.success) {
-        dispatch(registerAction({ ...data.user }));
-        navigate('/check-mail/change-password');
-      } else {
-        setResponse({ success: false, message: data.message });
-      }
-    } catch (error) {
-      setResponse({
-        success: false,
-        message: error.response.data.message || 'user not found',
-      });
+    setResponse({ ...RESPONSE_INITIAL, loading: true });
+    fetch(() => auth.forgotPassword({ email: form.email }))
+      .then(setResponse)
+      .catch(setResponse);
+    if (response.success) {
+      dispatch(registerAction({ ...response.data.user }));
+      navigate('/check-mail/change-password');
     }
   };
+
   return (
     <AnimatedBg>
       <div className={style.resetWrapper}>
@@ -50,7 +57,7 @@ export default function ResetPassword() {
                   'animate__animated animate__fadeInDown delay-200'
                 )}
               >
-                Forgot Password?
+                {lang.title}
               </h1>
               <p
                 className={classNames(
@@ -58,7 +65,7 @@ export default function ResetPassword() {
                   'animate__animated animate__fadeInDown delay-200'
                 )}
               >
-                Please enter your email while you register.
+                {lang.description}
               </p>
 
               <div
@@ -67,11 +74,11 @@ export default function ResetPassword() {
                   'animate__animated animate__fadeInLeft delay-300'
                 )}
               >
-                <legend>Email</legend>
+                <legend>{lang.email}</legend>
                 <div className={style.formInput}>
                   <input
                     type='text'
-                    placeholder='Please enter your email'
+                    placeholder={lang.emailPlaceholder}
                     value={form.email}
                     onChange={(e) => setForm({ email: e.target.value })}
                   />
@@ -87,7 +94,7 @@ export default function ResetPassword() {
                 )}
                 onClick={handleFormSubmit}
               >
-                Confirm
+                {response.loading ? 'Loading...' : lang.confirmBtn}
               </button>
               <button
                 className={classNames(
@@ -99,7 +106,7 @@ export default function ResetPassword() {
                   navigate('/signin');
                 }}
               >
-                Back
+                {lang.backBtn}
               </button>
             </form>
             <Footer />

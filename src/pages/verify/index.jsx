@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { auth } from 'requests';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-
+import languages from 'constants/lang';
 const FORM_INITIAL = {
   code: '',
 };
@@ -24,7 +24,10 @@ export default function Verify() {
   const [response, setResponse] = useState(RESPONSE_INITIAL);
   const navigate = useNavigate();
   const param = useParams().type;
-
+  const lang = useSelector(
+    (state) => languages[state.preferencesReducer.language].verify
+  );
+  document.title = lang.pageTitle;
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -76,7 +79,7 @@ export default function Verify() {
                   'animate__animated animate__fadeInDown delay-200'
                 )}
               >
-                Verification Code
+                {lang.title}
               </h1>
               <p
                 className={classNames(
@@ -84,7 +87,7 @@ export default function Verify() {
                   'animate__animated animate__fadeInDown delay-300'
                 )}
               >
-                Enter your verification code that send to your email.
+                {lang.description}
               </p>
 
               <div
@@ -93,11 +96,11 @@ export default function Verify() {
                   'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
-                <legend>Verification Code</legend>
+                <legend>{lang.verification}</legend>
                 <div className={style.formInput}>
                   <input
                     type='text'
-                    placeholder='Enter 6-digit code send to your verification device.'
+                    placeholder={lang.verificationPlaceholder}
                     value={form.code}
                     onChange={(e) => setForm({ code: e.target.value })}
                   />
@@ -119,7 +122,7 @@ export default function Verify() {
                 )}
                 onClick={handleFormSubmit}
               >
-                Confirm
+                {lang.confirmBtn}
               </button>
               <button
                 className={classNames(
@@ -127,7 +130,7 @@ export default function Verify() {
                   'animate__animated animate__fadeInUp delay-500'
                 )}
               >
-                Back
+                {lang.backBtn}
               </button>
             </form>
             <Footer />

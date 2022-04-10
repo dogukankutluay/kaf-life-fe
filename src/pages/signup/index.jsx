@@ -10,9 +10,11 @@ import Lottie from 'lottie-react';
 import SigninLottie from 'assets/animations/SigninLottie.json';
 import { useState } from 'react';
 import { auth } from 'requests';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerAction } from 'redux/actions/authAction';
 import { Checkbox } from 'components/checkbox';
+import languages from 'constants/lang';
+
 const FORM_INITIAL = {
   name: '',
   surname: '',
@@ -26,9 +28,12 @@ const RESPONSE_INITIAL = {
   message: '',
 };
 export default function Signup() {
-  document.title = 'Sign up';
   let navigate = useNavigate();
   let dispatch = useDispatch();
+  const lang = useSelector(
+    (state) => languages[state.preferencesReducer.language].signup
+  );
+  document.title = lang.title;
   const [form, setForm] = useState(FORM_INITIAL);
   const [response, setResponse] = useState(RESPONSE_INITIAL);
   const handleFormChange = (e) => {
@@ -75,7 +80,7 @@ export default function Signup() {
                   'animate__animated animate__fadeInDown delay-200'
                 )}
               >
-                Sign Up
+                {lang.title}
               </h1>
               <p
                 className={classNames(
@@ -83,27 +88,27 @@ export default function Signup() {
                   'animate__animated animate__fadeInDown delay-200'
                 )}
               >
-                Do you have an account? <Link to='/signin'>Sign in</Link>{' '}
+                {lang.subtitle} <Link to='/signin'>{lang.direct}</Link>{' '}
               </p>
               <aside className='animate__animated animate__fadeInLeft delay-300'>
                 <div className={style.formItem}>
-                  <legend>Name</legend>
+                  <legend>{lang.name}</legend>
                   <input
                     className={style.formInput}
                     type='text'
-                    placeholder='Please enter your name.'
+                    placeholder={lang.namePlaceholder}
                     name='name'
                     value={form.name}
                     onChange={handleFormChange}
                   />
                 </div>
                 <div className={style.formItem}>
-                  <legend>Surname</legend>
+                  <legend>{lang.surname}</legend>
                   <input
                     name='surname'
                     className={style.formInput}
                     type='text'
-                    placeholder='Please enter your surname'
+                    placeholder={lang.surnamePlaceholder}
                     value={form.surname}
                     onChange={handleFormChange}
                   />
@@ -111,23 +116,23 @@ export default function Signup() {
               </aside>
               <aside className='animate__animated animate__fadeInLeft delay-300'>
                 <div className={style.formItem}>
-                  <legend>E-mail</legend>
+                  <legend>{lang.email}</legend>
                   <input
                     name='email'
                     className={style.formInput}
                     type='text'
-                    placeholder='Please enter your e-mail.'
+                    placeholder={lang.emailPlaceholder}
                     value={form.email}
                     onChange={handleFormChange}
                   />
                 </div>
                 <div className={style.formItem}>
-                  <legend>Phone</legend>
+                  <legend>{lang.phone}</legend>
                   <input
                     name='phone'
                     className={style.formInput}
                     type='text'
-                    placeholder='Please enter your phone.'
+                    placeholder={lang.phonePlaceholder}
                     value={form.phone}
                     onChange={handleFormChange}
                   />
@@ -139,12 +144,12 @@ export default function Signup() {
                   'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
-                <legend>Password</legend>
+                <legend>{lang.password}</legend>
                 <input
                   name='password'
                   className={style.formInput}
                   type='password'
-                  placeholder='Enter at least 8 characters with special characters.'
+                  placeholder={lang.passwordPlaceholder}
                   value={form.password}
                   onChange={handleFormChange}
                 />
@@ -155,12 +160,12 @@ export default function Signup() {
                   'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
-                <legend>Confirm your password</legend>
+                <legend>{lang.confirmPassword}</legend>
                 <input
                   name='confirmPassword'
                   className={style.formInput}
                   type='password'
-                  placeholder='Please confirm your password.'
+                  placeholder={lang.confirmPasswordPlaceholder}
                   value={form.confirmPassword}
                   onChange={handleFormChange}
                 />
@@ -172,10 +177,7 @@ export default function Signup() {
                 )}
               >
                 <Checkbox />
-                <span>
-                  Your password has to be at least 8 characters and have one
-                  special character.
-                </span>
+                <span>{lang.checkbox}</span>
               </div>
               {/* form buttons */}
               <span
@@ -193,10 +195,10 @@ export default function Signup() {
                     navigate('/signin');
                   }}
                 >
-                  Cancel
+                  {lang.cancel}
                 </button>
                 <button className={style.btnConfirm} onClick={handleFormSubmit}>
-                  Confirm
+                  {lang.confirm}
                 </button>
               </aside>
             </form>
@@ -223,7 +225,7 @@ export default function Signup() {
               )}
             >
               <h2 className='animate__animated animate__fadeInDown'>
-                One Step to KAF Life
+                {lang.cardTitle}
               </h2>
               <img
                 src={require('assets/images/signin_image.jpeg')}
@@ -231,9 +233,9 @@ export default function Signup() {
                 className='animate__animated animate__slideInRight'
               />
               <p className='animate__animated animate__fadeInUp'>
-                If you want to enjoy KAF Life’s benefits, you have you have to
-                apply for KAF Pay Card first. You can{' '}
-                <Link to='/signin'>click here</Link> for apply.
+                {lang.cardDescription}
+                <Link to='/signin'>{lang.cardDirect}</Link>{' '}
+                {lang.descriptionEnd}
               </p>
             </div>
             <KafLifeLogo

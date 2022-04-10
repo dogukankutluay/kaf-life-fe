@@ -12,10 +12,11 @@ import Welcome from 'assets/animations/Welcome.json';
 import lottieBg from 'assets/images/lottiebg.png';
 import { useNavigate } from 'react-router-dom';
 import { auth } from 'requests';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { redirectAction } from 'redux/actions/authAction';
 import { Checkbox } from 'components/checkbox';
 import Unlock from 'assets/animations/Unlock.json';
+import languages from 'constants/lang';
 const FORM_INITIAL = {
   email: '',
   password: '',
@@ -25,7 +26,10 @@ const RESPONSE_INITIAL = {
   message: '',
 };
 export default function Signin() {
-  document.title = 'Sign in';
+  let lang = useSelector(
+    (state) => languages[state.preferencesReducer.language].signin
+  );
+  document.title = lang.title;
   const [loginForm, setLoginForm] = useState(FORM_INITIAL);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -73,7 +77,7 @@ export default function Signin() {
                   'animate__animated animate__fadeInDown delay-200'
                 )}
               >
-                Login
+                {lang.title}
               </h1>
               <p
                 className={classNames(
@@ -81,7 +85,7 @@ export default function Signin() {
                   'animate__animated animate__fadeInDown delay-200 '
                 )}
               >
-                Don’t have an account yet? <Link to='/signup'>Sign up</Link>{' '}
+                {lang.subtitle} <Link to='/signup'>{lang.direct}</Link>{' '}
               </p>
               <div
                 className={classNames(
@@ -89,14 +93,15 @@ export default function Signin() {
                   'animate__animated animate__fadeInLeft delay-300'
                 )}
               >
-                <legend>Email / Mobile</legend>
+                <legend>{lang.email}</legend>
                 <div className={style.formInput}>
                   <input
                     type='text'
-                    placeholder='Please enter your email or mobile phone'
+                    placeholder={lang.emailPlaceholder}
                     name='email'
                     value={loginForm.email}
                     onChange={handleFormChange}
+                    autoComplete='username'
                   />
                   <MailIcon />
                 </div>
@@ -107,14 +112,15 @@ export default function Signin() {
                   'animate__animated animate__fadeInLeft delay-300'
                 )}
               >
-                <legend>Password</legend>
+                <legend>{lang.password}</legend>
                 <div className={style.formInput}>
                   <input
                     type='password'
-                    placeholder='Please enter your password'
+                    placeholder={lang.passwordPlaceholder}
                     value={loginForm.password}
                     name='password'
                     onChange={handleFormChange}
+                    autoComplete='current-password'
                   />
                   <PasswordIcon />
                 </div>
@@ -126,7 +132,7 @@ export default function Signin() {
                 )}
               >
                 <Checkbox />
-                <span>Remember me</span>
+                <span>{lang.checkbox}</span>
               </div>
               {/* form buttons */}
               <span
@@ -150,7 +156,7 @@ export default function Signin() {
                     className='animate__animated animate__zoomIn'
                   />
                 ) : (
-                  'Login'
+                  lang.loginBtn
                 )}
               </button>
               <button
@@ -163,7 +169,7 @@ export default function Signin() {
                   navigate('/reset');
                 }}
               >
-                Reset password
+                {lang.reset}
               </button>
             </form>
             <Footer />

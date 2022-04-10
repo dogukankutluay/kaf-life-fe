@@ -6,9 +6,13 @@ import style from './checkmail.module.scss';
 import classNames from 'classnames';
 import Lottie from 'lottie-react';
 import { useNavigate, useParams } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
+import languages from 'constants/lang';
 export default function CheckYourMail() {
-  document.title = 'Check your mail';
+  const lang = useSelector(
+    (state) => languages[state.preferencesReducer.language].checkMail
+  );
+  document.title = lang.pageTitle;
 
   let navigate = useNavigate();
   const redirect = useParams().redirect;
@@ -24,18 +28,16 @@ export default function CheckYourMail() {
           <KafLifeTextLogo className='animate__animated animate__fadeInLeft delay-200' />
           <Lottie {...animationOptions} className='delay-300' />
           <h1 className='animate__animated animate__fadeInUp delay-300'>
-            Please check your email!
+            {lang.title}
           </h1>
           <p className='animate__animated animate__fadeInUp delay-300'>
-            Please check your inbox for further instructions. Some emails can go
-            to SPAM folder in order to prevent communication loss, please check
-            this folder too.
+            {lang.description}
           </p>
           <button
             className='animate__animated animate__fadeInUp delay-400'
             onClick={() => navigate(`/verify/${redirect}`)}
           >
-            Continue
+            {lang.continueBtn}
           </button>
           <KafLifeLogo className='animate__animated animate__fadeInRight delay-500' />
           <Footer />

@@ -5,8 +5,14 @@ import React from 'react';
 import style from './success.module.scss';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import languages from 'constants/lang';
 export default function SigninSuccess() {
   const navigate = useNavigate();
+  const lang = useSelector(
+    (state) => languages[state.preferencesReducer.language].signinSuccess
+  );
+  document.title = lang.pageTitle;
   return (
     <AnimatedBg>
       <div className={style.signinSuccessWrapper}>
@@ -23,17 +29,16 @@ export default function SigninSuccess() {
             className='animate__animated animate__fadeIn delay-300'
           />
           <h1 className='animate__animated animate__fadeInUp delay-300'>
-            You have succesfully signed in!
+            {lang.title}
           </h1>
           <p className='animate__animated animate__fadeInUp delay-300'>
-            Now you can easily access to your KAF Life account and start
-            enjoying benefits
+            {lang.description}
           </p>
           <button
             className='animate__animated animate__fadeInUp delay-500'
             onClick={() => navigate('/')}
           >
-            Continue
+            {lang.continueBtn}
           </button>
           <KafLifeLogo className='animate__animated animate__fadeInRight delay-500' />
           <Footer />

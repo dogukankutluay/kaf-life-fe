@@ -3,8 +3,8 @@
     "title": "Login",
     "subtitle": "Dont have Account yet?",
     "direct": "Sign up",
-    "email": "Email / Mobile",
-    "emailPlaceholder": "Please enter your phone number or email",
+    "email": "Email",
+    "emailPlaceholder": "Please enter your email",
     "password": "Password",
     "passwordPlaceholder": "Please enter your password",
     "checkbox": "Remember me",
@@ -21,7 +21,7 @@
     "surnamePlaceholder": "Enter your surname",
     "email": "Email",
     "emailPlaceholder": "Enter your mail",
-    "Phone": "Phone",
+    "phone": "Phone",
     "phonePlaceholder": "Enter your phone",
     "password": "Password",
     "passwordPlaceholder": "Enter your password",
@@ -29,6 +29,66 @@
     "confirmPasswordPlaceholder": "Confirm your password",
     "checkbox": "Your password has to be at least 8 characters and have one special character.",
     "cancel": "Cancel",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "cardTitle": "One Step to KAF Life ",
+    "cardDescription": "If you want to enjoy KAF Life’s benefits, you have you have to apply for KAF Pay Card first. You can ",
+    "cardDirect": "click here",
+    "descriptionEnd": "for apply"
+  },
+  "reset": {
+    "pageTitle": "Reset",
+    "title": "Forgot Password?",
+    "description": "Please enter your email while you register.",
+    "email": "Email",
+    "emailPlaceholder": "Enter your mail address",
+    "confirmBtn": "Confirm",
+    "backBtn": "Back"
+  },
+  "signinSuccess": {
+    "pageTitle": "Success!",
+    "title": "You have succesfully signed in!",
+    "description": "Now you can easily access to your KAF Life account and start enjoying benefits",
+    "continueBtn": "Continue"
+  },
+  "signupSuccess": {
+    "pageTitle": "Success!",
+    "title": "You have succesfully signed up!",
+    "description": "Now you can easily access to your KAF Life account and start enjoying benefits",
+    "continueBtn": "Continue"
+  },
+  "checkMail": {
+    "pageTitle": "Message has been sent!",
+    "title": "Please check your device!",
+    "description": "Verification code has been sent. Please check your messages or email address",
+    "continueBtn": "Continue"
+  },
+  "verify": {
+    "pageTitle": "Verify",
+    "title": "Verification Code",
+    "description": "Enter your verification code that send to your device.",
+    "verification": "Verification Code",
+    "verificationPlaceholder": "Enter 6-digit code send to your verification device",
+    "confirmBtn": "Confirm",
+    "backBtn": "Back"
+  },
+  "changePassword": {
+    "pageTitle": "Change Password",
+    "title": "Change Password",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Enter your new password",
+    "passwordVerify": "Re-enter Password",
+    "passwordVerifyPlaceholder": "Enter your password again",
+    "confirmBtn": "Confirm",
+    "backBtn": "Back"
+  },
+  "passwordConfirm": {
+    "pageTitle": "Success!",
+    "title": "You have succesfully changed your password!",
+    "description": "Now you can easily signin",
+    "continueBtn": "Continue"
+  },
+  "footer": {
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy"
   }
 }

@@ -9,6 +9,8 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { auth } from 'requests';
+import { useSelector } from 'react-redux';
+import languages from 'constants/lang';
 const FORM_INITIAL = {
   password: '',
   passwordConfirmation: '',
@@ -23,6 +25,10 @@ export default function ChangePassword() {
   const code = useParams().code;
   const [response, setResponse] = useState(RESPONSE_INITIAL);
   const navigate = useNavigate();
+  const lang = useSelector(
+    (state) => languages[state.preferencesReducer.language].changePassword
+  );
+  document.title = lang.pageTitle;
   const handleSubmit = async (e) => {
     e.preventDefault();
     setResponse(RESPONSE_INITIAL);
@@ -58,7 +64,7 @@ export default function ChangePassword() {
                   'animate__animated animate__fadeInDown delay-300'
                 )}
               >
-                Forgot Password?
+                {lang.title}
               </h1>
               <p
                 className={classNames(
@@ -66,7 +72,7 @@ export default function ChangePassword() {
                   'animate__animated animate__fadeInDown delay-300'
                 )}
               >
-                Please enter your email while you register.
+                {lang.description}
               </p>
 
               <div
@@ -75,11 +81,11 @@ export default function ChangePassword() {
                   'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
-                <legend>New Password</legend>
+                <legend>{lang.newPassword}</legend>
                 <input
                   className={style.formInput}
                   type='password'
-                  placeholder='Please enter your new password'
+                  placeholder={lang.newPasswordPlaceholder}
                   onChange={(e) =>
                     setForm({ ...form, password: e.target.value })
                   }
@@ -91,11 +97,11 @@ export default function ChangePassword() {
                   'animate__animated animate__fadeInLeft delay-400'
                 )}
               >
-                <legend>Re-enter Password</legend>
+                <legend>{lang.passwordVerify}</legend>
                 <input
                   className={style.formInput}
                   type='password'
-                  placeholder='Enter your new password again.'
+                  placeholder={lang.passwordVerifyPlaceholder}
                   onChange={(e) =>
                     setForm({ ...form, passwordConfirmation: e.target.value })
                   }
@@ -110,7 +116,7 @@ export default function ChangePassword() {
                 )}
                 onClick={handleSubmit}
               >
-                Confirm
+                {lang.confirmBtn}
               </button>
               <button
                 className={classNames(
@@ -119,7 +125,7 @@ export default function ChangePassword() {
                 )}
                 onClick={() => navigate('/signin')}
               >
-                Back
+                {lang.backBtn}
               </button>
             </form>
             <Footer />

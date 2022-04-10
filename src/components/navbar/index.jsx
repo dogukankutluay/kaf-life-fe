@@ -25,7 +25,7 @@ export default function Navbar() {
     >
       <KafLifeTextLogo />
       <div className={style.select} onClick={() => setActive(!active)}>
-        <div className={classNames(style.head, style.option)}>
+        <div className={style.head}>
           <span className={style.flag}>{languages[item].flag}</span>
           <p>{languages[item].lang}</p>
           <ArrowDown />

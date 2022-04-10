@@ -3,12 +3,92 @@
     "title": "Giriş Yap",
     "subtitle": "Hesabın yok mu?",
     "direct": "Kayıt ol",
-    "email": "Email / Telefon",
-    "emailPlaceholder": "Lütfen telefon numaranızı veya mailinizi girin",
+    "email": "Email",
+    "emailPlaceholder": "Lütfen mailinizi girin",
     "password": "Şifre",
     "passwordPlaceholder": "Lüften şifrenizi girin",
     "checkbox": "Beni hatırla",
     "loginBtn": "Giriş",
     "reset": "Şifremi sıfırla"
+  },
+  "signup": {
+    "title": "Kayıt ol",
+    "subtitle": "Hesabın var mı?",
+    "direct": "Giriş yap",
+    "name": "İsim",
+    "namePlaceholder": "İsminizi giriniz",
+    "surname": "Soyad",
+    "surnamePlaceholder": "Soyadınızı giriniz",
+    "email": "Email",
+    "emailPlaceholder": "Mail adresinizi giriniz",
+    "phone": "Telefon",
+    "phonePlaceholder": "Numaranızı giriniz",
+    "password": "Şifre",
+    "passwordPlaceholder": "Şifrenizi giriniz",
+    "confirmPassword": "Şifre onay",
+    "confirmPasswordPlaceholder": "Şifrenizi onaylayın",
+    "checkbox": "Şifreniz en az 8 karakter olmalıdır",
+    "cancel": "Geri",
+    "confirm": "Onayla",
+    "cardTitle": "KAF life bir adım uzağınızda",
+    "cardDescription": "KAF Life'ın avantajlarından yararlanmak istiyorsanız, önce KAF Pay Card'a başvurmanız gerekiyor başvuru için ",
+    "cardDirect": "buraya",
+    "descriptionEnd": "tıklayın"
+  },
+  "reset": {
+    "pageTitle": "Sıfırla",
+    "title": "Şifreni sıfırla",
+    "description": "Lüften kayıtlı email adresinizi giriniz",
+    "email": "Email",
+    "emailPlaceholder": "Mail adresinizi giriniz",
+    "confirmBtn": "Onayla",
+    "backBtn": "Geri"
+  },
+  "signinSuccess": {
+    "pageTitle": "Başarılı!",
+    "title": "Başarılı şekilde giriş yaptın!",
+    "description": "Artık KAF Life hesabınıza kolayca erişebilir ve avantajlardan yararlanmaya başlayabilirsin",
+    "continueBtn": "Devam"
+  },
+  "signupSuccess": {
+    "pageTitle": "Başarılı!",
+    "title": "Başarılı şekilde kayıt oldun!",
+    "description": "Artık KAF Life hesabınıza kolayca erişebilir ve avantajlardan yararlanmaya başlayabilirsin",
+    "continueBtn": "Devam"
+  },
+  "checkMail": {
+    "pageTitle": "Mesaj gönderildi!",
+    "title": "Lütfen cihazınızı kontrol edin!",
+    "description": "Doğrulama kodu gönderildi. Lütfen mesajlarınızı veya mail adresinizi kontrol edin.",
+    "continueBtn": "Devam"
+  },
+  "verify": {
+    "pageTitle": "Doğrula",
+    "title": "Doğrulama kodu",
+    "description": "Cihazınıza gönderilen doğrulama kodunu giriniz",
+    "verification": "Doğrulama kodu",
+    "verificationPlaceholder": "Cihazınıza gönderilen 6 haneli doğrulama kodunu giriniz",
+    "confirmBtn": "Onayla",
+    "backBtn": "Geri"
+  },
+  "changePassword": {
+    "pageTitle": "Şifreni Değiştir",
+    "title": "Şifreni Değiştir",
+    "newPassword": "Yeni şifre",
+    "newPasswordPlaceholder": "Yeni şifrenizi giriniz",
+    "passwordVerify": "Şifre tekrar",
+    "passwordVerifyPlaceholder": "Yeni şifrenizi tekrar giriniz",
+    "confirmBtn": "Onayla",
+    "backBtn": "Geri"
+  },
+  "passwordConfirm": {
+    "pageTitle": "Başarılı!",
+    "title": "Şifreni başarılı şekilde değiştirdin!",
+    "description": "Şimdi kolayca giriş yapabilirsin",
+    "continueBtn": "Devam"
+  },
+  "footer": {
+    "terms": "Şartlar & Koşullar",
+    "privacy": "Gizlilik Politikası"
   }
 }
