@@ -24,9 +24,14 @@ export default function ResetPassword() {
       if (data.success) {
         dispatch(registerAction({ ...data.user }));
         navigate('/check-mail/change-password');
+      } else {
+        setResponse({ success: false, message: data.message });
       }
     } catch (error) {
-      setResponse({ success: false, message: 'user not found' });
+      setResponse({
+        success: false,
+        message: error.response.data.message || 'user not found',
+      });
     }
   };
   return (

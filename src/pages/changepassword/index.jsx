@@ -30,9 +30,14 @@ export default function ChangePassword() {
       const { data } = await auth.changePassword({ ...form, code });
       if (data.success) {
         navigate('/password-confirm-success');
+      } else {
+        setResponse({ success: false, message: data.message });
       }
     } catch (error) {
-      setResponse({ success: false, message: 'invalid code' });
+      setResponse({
+        success: false,
+        message: error.response.data.message || 'An error occured',
+      });
     }
   };
   return (

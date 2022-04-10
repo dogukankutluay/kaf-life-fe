@@ -42,6 +42,8 @@ export default function Signin() {
         dispatch(redirectAction(result.data.redirect));
         setResponse({ success: true, message: 'Login succeed.' });
         navigate('/signin-success');
+      } else {
+        setResponse({ success: false, message: result.data.message });
       }
     } catch (error) {
       setResponse({

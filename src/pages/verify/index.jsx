@@ -32,6 +32,11 @@ export default function Verify() {
         const result = await auth.confirmRegister({ code: form.code, phone });
         if (result.data.success) {
           navigate('/signup-success');
+        } else {
+          setResponse({
+            success: false,
+            message: result.data.message,
+          });
         }
       }
       if (param === 'change-password') {
@@ -41,10 +46,18 @@ export default function Verify() {
         });
         if (result.data.success) {
           navigate(`/change-password/${form.code}`);
+        } else {
+          setResponse({
+            success: false,
+            message: result.data.message,
+          });
         }
       }
     } catch (error) {
-      setResponse({ success: false, message: 'Code is not valid' });
+      setResponse({
+        success: false,
+        message: error.response.data.message || 'Code is not valid',
+      });
     }
   };
   return (

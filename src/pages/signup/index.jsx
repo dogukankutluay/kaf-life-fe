@@ -49,6 +49,8 @@ export default function Signup() {
         setResponse({ success: true, message: 'Successfully registered' });
         dispatch(registerAction({ phone: form.phone }));
         navigate('/verify/account');
+      } else {
+        setResponse({ success: false, message: result.data.message });
       }
     } catch (error) {
       setResponse({
