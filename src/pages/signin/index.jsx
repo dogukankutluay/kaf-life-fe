@@ -17,6 +17,8 @@ import { redirectAction } from 'redux/actions/authAction';
 import { Checkbox } from 'components/checkbox';
 import Unlock from 'assets/animations/Unlock.json';
 import languages from 'constants/lang';
+import ReCAPTCHA from 'react-google-recaptcha';
+
 const FORM_INITIAL = {
   email: '',
   password: '',
@@ -34,12 +36,20 @@ export default function Signin() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [response, setResponse] = useState(RESPONSE_INITIAL);
+  const [captcha, setCaptcha] = useState({ load: false, value: '' });
   let dispatch = useDispatch();
   const handleFormSubmit = async (e) => {
-    setResponse(RESPONSE_INITIAL);
     e.preventDefault();
     setLoading(true);
-
+    if (captcha.load && !captcha.value) {
+      setResponse({
+        success: false,
+        message: 'Please verify you are not a robot',
+      });
+      setLoading(false);
+      return 0;
+    }
+    setResponse(RESPONSE_INITIAL);
     try {
       const result = await auth.login(loginForm);
       if (result.data.success) {
@@ -60,7 +70,9 @@ export default function Signin() {
     }
     setLoading(false);
   };
-
+  const handleCaptcha = (value) => {
+    setCaptcha(value);
+  };
   const handleFormChange = (e) => {
     setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
   };
@@ -137,6 +149,10 @@ export default function Signin() {
                 <Checkbox />
                 <span>{lang.checkbox}</span>
               </div>
+              <ReCAPTCHA
+                sitekey='6Lf7FGUfAAAAAM8F9XA06t3y2KpuKujrn7t4JSdc'
+                onChange={handleCaptcha}
+              />
               {/* form buttons */}
               <span
                 className={

@@ -37,7 +37,7 @@ export default function Navbar() {
           <ArrowDown />
         </div>
         {active && (
-          <div className={classNames(style.options)}>
+          <div className={classNames(style.options, style.animate)}>
             {languages.map((language, key) => {
               return (
                 <div
