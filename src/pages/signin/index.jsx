@@ -150,7 +150,7 @@ export default function Signin() {
                 <span>{lang.checkbox}</span>
               </div>
               <ReCAPTCHA
-                sitekey='6Lf7FGUfAAAAAM8F9XA06t3y2KpuKujrn7t4JSdc'
+                sitekey='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
                 onChange={handleCaptcha}
               />
               {/* form buttons */}
