@@ -1,36 +1,42 @@
 import style from './navbar.module.scss';
 import { FlagTr, KafLifeTextLogo, FlagEn, ArrowDown } from 'assets/icons';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage } from 'redux/actions/preferencesAction';
-
+import './test.scss';
 export default function Navbar() {
-  let activeLang = useSelector((state) => state.preferencesReducer.language);
+  let activeLang = useSelector(state => state.preferencesReducer.language);
   const [active, setActive] = useState(false);
   const [item, setItem] = useState(
-    languages.findIndex((l) => l.code === activeLang)
+    languages.findIndex(l => l.code === activeLang)
   );
   let dispatch = useDispatch();
-  const changeLanguage = (index) => {
+  const changeLanguage = index => {
     setItem(index);
     dispatch(setLanguage(languages[index].code));
   };
+  useEffect(() => {
+    document.querySelector('.button').addEventListener('click', () => {
+      document
+        .querySelector('.menu__list')
+        .classList.toggle('menu__list--animate');
+    });
+  }, []);
+
   return (
     <nav
       className={classNames(
         style.navbarWrapper,
         'animate__animated animate__fadeInLeftBig delay-100'
-      )}
-    >
+      )}>
       <KafLifeTextLogo />
-      <div
+      {/* <div
         className={classNames(
           style.select,
           'animate__animated animate__fadeInDown delay-300'
         )}
-        onClick={() => setActive(!active)}
-      >
+        onClick={() => setActive(!active)}>
         <div className={style.head}>
           <span className={style.flag}>{languages[item].flag}</span>
           <p>{languages[item].lang}</p>
@@ -43,8 +49,7 @@ export default function Navbar() {
                 <div
                   className={style.option}
                   key={key}
-                  onClick={() => changeLanguage(key)}
-                >
+                  onClick={() => changeLanguage(key)}>
                   <span className={style.flag}> {language.flag}</span>
                   {language.lang}
                 </div>
@@ -52,6 +57,26 @@ export default function Navbar() {
             })}
           </div>
         )}
+      </div> */}
+      <div class="wrapper">
+        <div class="menu">
+          <ul class="menu__list">
+            {languages.map((language, key) => {
+              return (
+                <li class="menu__list__item">
+                  <a href="#"> {language.lang}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div class="button">
+          <div className={style.head}>
+            <span className={style.flag}>{languages[item].flag}</span>
+            <p>{languages[item].lang}</p>
+            <ArrowDown />
+          </div>
+        </div>
       </div>
     </nav>
   );
