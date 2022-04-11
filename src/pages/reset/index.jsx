@@ -11,8 +11,9 @@ import { useState } from 'react';
 import { auth } from 'requests';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerAction } from 'redux/actions/authAction';
-import fetch from 'helpers/fetch';
 import languages from 'constants/lang';
+import Unlock from 'assets/animations/Unlock.json';
+
 const RESPONSE_INITIAL = {
   success: false,
   message: '',
@@ -28,16 +29,36 @@ export default function ResetPassword() {
   document.title = lang.pageTitle;
   const [form, setForm] = useState({ email: '' });
   const [response, setResponse] = useState(RESPONSE_INITIAL);
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setResponse({ ...RESPONSE_INITIAL, loading: true });
-    fetch(() => auth.forgotPassword({ email: form.email }))
-      .then(setResponse)
-      .catch(setResponse);
-    if (response.success) {
-      dispatch(registerAction({ ...response.data.user }));
-      navigate('/check-mail/change-password');
+    try {
+      const result = await auth.forgotPassword({ email: form.email });
+      if (result.data.success) {
+        setResponse({
+          ...response,
+          data: result.data,
+          success: true,
+          message: 'success!',
+          loading: false,
+        });
+
+        dispatch(registerAction(result.data.user));
+        navigate('/check-mail/change-password');
+      } else {
+        setResponse({
+          success: false,
+          message: result.data.message || 'An error occured',
+          loading: false,
+        });
+      }
+    } catch (error) {
+      setResponse({
+        ...response,
+        success: false,
+        message: error.response.data.message || 'An error occured',
+        loading: false,
+      });
     }
   };
 
@@ -85,7 +106,13 @@ export default function ResetPassword() {
                   <MailIcon />
                 </div>
               </div>
-              <span className='response-error'>{response.message}</span>
+              <span
+                className={
+                  response.success ? 'response-success' : 'response-error'
+                }
+              >
+                {response.message}
+              </span>
               {/* form buttons */}
               <button
                 className={classNames(
@@ -94,7 +121,15 @@ export default function ResetPassword() {
                 )}
                 onClick={handleFormSubmit}
               >
-                {response.loading ? 'Loading...' : lang.confirmBtn}
+                {response.loading ? (
+                  <Lottie
+                    {...unlockAnimation}
+                    style={lottieStyle}
+                    className='animate__animated animate__zoomIn'
+                  />
+                ) : (
+                  lang.confirmBtn
+                )}
               </button>
               <button
                 className={classNames(
@@ -145,6 +180,13 @@ const animationOptions = {
   loop: true,
   autoPlay: true,
 };
+const unlockAnimation = {
+  animationData: Unlock,
+  loop: true,
+  autoPlay: true,
+};
+const lottieStyle = { width: '50px', marginLeft: 'auto', marginRight: 'auto' };
+
 const animationContainer = {
   backgroundImage: `url(${require('assets/images/lottiebg.png')})`,
   backgroundSize: 'contain',

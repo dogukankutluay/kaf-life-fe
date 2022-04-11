@@ -53,9 +53,12 @@ export default function Signup() {
       if (result.data.success) {
         setResponse({ success: true, message: 'Successfully registered' });
         dispatch(registerAction({ phone: form.phone }));
-        navigate('/verify/account');
+        navigate('/check-mail/account');
       } else {
-        setResponse({ success: false, message: result.data.message });
+        setResponse({
+          success: false,
+          message: result.data.message || 'An error occured',
+        });
       }
     } catch (error) {
       setResponse({

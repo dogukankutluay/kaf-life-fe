@@ -1,9 +1,10 @@
 function fetch(request) {
   return request()
     .then((res) => {
+      console.log(res);
       const response = {
-        success: res.data.data.success,
-        message: res.data.data.message,
+        success: res?.data?.success || true,
+        message: res?.data?.message || 'success!',
         data: res.data.data || res.data,
         loading: false,
       };

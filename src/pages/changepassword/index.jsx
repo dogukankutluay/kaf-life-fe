@@ -11,6 +11,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { auth } from 'requests';
 import { useSelector } from 'react-redux';
 import languages from 'constants/lang';
+import Unlock from 'assets/animations/Unlock.json';
 const FORM_INITIAL = {
   password: '',
   passwordConfirmation: '',
@@ -19,31 +20,42 @@ const RESPONSE_INITIAL = {
   success: false,
   message: '',
 };
-
 export default function ChangePassword() {
   const [form, setForm] = useState(FORM_INITIAL);
   const code = useParams().code;
   const [response, setResponse] = useState(RESPONSE_INITIAL);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const lang = useSelector(
     (state) => languages[state.preferencesReducer.language].changePassword
   );
   document.title = lang.pageTitle;
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setResponse(RESPONSE_INITIAL);
+    if (form.password !== form.passwordConfirmation) {
+      setResponse({ success: false, message: 'passwords are not same' });
+      setLoading(false);
+      return 0;
+    }
     try {
       const { data } = await auth.changePassword({ ...form, code });
       if (data.success) {
         navigate('/password-confirm-success');
       } else {
-        setResponse({ success: false, message: data.message });
+        setResponse({
+          success: false,
+          message: data.message,
+        });
       }
+      setLoading(false);
     } catch (error) {
       setResponse({
         success: false,
         message: error.response.data.message || 'An error occured',
       });
+      setLoading(false);
     }
   };
   return (
@@ -116,7 +128,15 @@ export default function ChangePassword() {
                 )}
                 onClick={handleSubmit}
               >
-                {lang.confirmBtn}
+                {loading ? (
+                  <Lottie
+                    style={lottieStyle}
+                    {...unlockAnimation}
+                    className='animate__animated animate__zoomIn'
+                  />
+                ) : (
+                  lang.confirmBtn
+                )}
               </button>
               <button
                 className={classNames(
@@ -174,3 +194,9 @@ const animationContainer = {
   alignItems: 'center',
   justifyContent: 'center',
 };
+const unlockAnimation = {
+  animationData: Unlock,
+  loop: true,
+  autoPlay: true,
+};
+const lottieStyle = { width: '50px', marginLeft: 'auto', marginRight: 'auto' };

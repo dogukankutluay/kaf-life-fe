@@ -40,7 +40,6 @@ export default function Signin() {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => setLoading(false), 3500);
     try {
       const result = await auth.login(loginForm);
       if (result.data.success) {
@@ -48,14 +47,18 @@ export default function Signin() {
         setResponse({ success: true, message: 'Login succeed.' });
         navigate('/signin-success');
       } else {
-        setResponse({ success: false, message: result.data.message });
+        setResponse({
+          success: false,
+          message: result.data.message || 'An error occured',
+        });
       }
     } catch (error) {
       setResponse({
         success: false,
-        message: error.response.data.message || error.response,
+        message: error.response.data.message || 'An error  occured',
       });
     }
+    setLoading(false);
   };
 
   const handleFormChange = (e) => {

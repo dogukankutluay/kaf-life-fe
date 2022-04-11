@@ -38,7 +38,7 @@ export default function Verify() {
         } else {
           setResponse({
             success: false,
-            message: result.data.message,
+            message: result.data.message || 'An error occured',
           });
         }
       }
@@ -52,7 +52,7 @@ export default function Verify() {
         } else {
           setResponse({
             success: false,
-            message: result.data.message,
+            message: result.data.message || 'An error occured',
           });
         }
       }
@@ -129,6 +129,7 @@ export default function Verify() {
                   style.btnBack,
                   'animate__animated animate__fadeInUp delay-500'
                 )}
+                onClick={() => navigate('/signin')}
               >
                 {lang.backBtn}
               </button>

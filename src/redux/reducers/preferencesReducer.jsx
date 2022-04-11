@@ -1,6 +1,6 @@
 import { LANGUAGE } from 'redux/types';
 const INITIAL_STATE = {
-  language: 'tr',
+  language: 'en',
 };
 
 const preferencesReducer = (state = INITIAL_STATE, action) => {
