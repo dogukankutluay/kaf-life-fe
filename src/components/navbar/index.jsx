@@ -24,14 +24,20 @@ export default function Navbar() {
       )}
     >
       <KafLifeTextLogo />
-      <div className={style.select} onClick={() => setActive(!active)}>
+      <div
+        className={classNames(
+          style.select,
+          'animate__animated animate__fadeInDown delay-300'
+        )}
+        onClick={() => setActive(!active)}
+      >
         <div className={style.head}>
           <span className={style.flag}>{languages[item].flag}</span>
           <p>{languages[item].lang}</p>
           <ArrowDown />
         </div>
         {active && (
-          <div className={style.options}>
+          <div className={classNames(style.options)}>
             {languages.map((language, key) => {
               return (
                 <div
