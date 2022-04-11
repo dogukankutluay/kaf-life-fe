@@ -36,12 +36,12 @@ export default function Signin() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [response, setResponse] = useState(RESPONSE_INITIAL);
-  const [captcha, setCaptcha] = useState({ load: false, value: '' });
+  const [captcha, setCaptcha] = useState();
   let dispatch = useDispatch();
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (captcha.load && !captcha.value) {
+    if (!captcha) {
       setResponse({
         success: false,
         message: 'Please verify you are not a robot',

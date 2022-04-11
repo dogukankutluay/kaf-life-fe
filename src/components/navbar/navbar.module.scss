@@ -35,7 +35,6 @@
 .option {
   @extend %option;
   margin-bottom: 5px;
-  opacity: 0;
 }
 .flag {
   svg {
@@ -49,41 +48,41 @@
   }
 }
 
-// vars and keyframes
-$delay: 0.5s;
-$menu-items: 2;
+// // vars and keyframes
+// $delay: 0.5s;
+// $menu-items: 2;
 
-@keyframes drop {
-  from {
-    top: 0px;
-  }
-  70% {
-    top: 55px;
-    animation-timing-function: ease-in;
-  }
-  to {
-    top: 40px;
-    animation-timing-function: ease-out;
-  }
-}
+// @keyframes drop {
+//   from {
+//     top: 0px;
+//   }
+//   70% {
+//     top: 55px;
+//     animation-timing-function: ease-in;
+//   }
+//   to {
+//     top: 40px;
+//     animation-timing-function: ease-out;
+//   }
+// }
 
-.commander {
-  width: 100%;
-  color: #2e3f47;
-  font-size: 1.5em;
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-}
+// .commander {
+//   width: 100%;
+//   color: #2e3f47;
+//   font-size: 1.5em;
+//   font-family: 'Open Sans', sans-serif;
+//   text-align: center;
+// }
 
-.animate,
-.option {
-  animation: drop 0.9s;
-  animation-fill-mode: forwards;
-  opacity: 1;
+// .animate,
+// .option {
+//   animation: drop 0.9s;
+//   animation-fill-mode: forwards;
+//   opacity: 1;
 
-  @for $i from 2 through $menu-items {
-    &:nth-of-type(#{$i}) {
-      animation-delay: $delay * ($i - 1);
-    }
-  }
-}
+//   @for $i from 2 through $menu-items {
+//     &:nth-of-type(#{$i}) {
+//       animation-delay: $delay * ($i - 1);
+//     }
+//   }
+// }
