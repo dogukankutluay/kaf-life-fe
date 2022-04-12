@@ -38,3 +38,15 @@
     }
   }
 }
+@media (max-width: $tablet) {
+  .splash {
+    &Container {
+      h2 {
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}

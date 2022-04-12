@@ -30,7 +30,7 @@ const RESPONSE_INITIAL = {
 };
 export default function Signin() {
   let lang = useSelector(
-    (state) => languages[state.preferencesReducer.language].signin
+    state => languages[state.preferencesReducer.language].signin
   );
   document.title = lang.title;
   const [splash, setSplash] = useState(true);
@@ -40,7 +40,7 @@ export default function Signin() {
   const [response, setResponse] = useState(RESPONSE_INITIAL);
   const [captcha, setCaptcha] = useState();
   let dispatch = useDispatch();
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = async e => {
     e.preventDefault();
     setLoading(true);
     if (!captcha) {
@@ -72,10 +72,10 @@ export default function Signin() {
     }
     setLoading(false);
   };
-  const handleCaptcha = (value) => {
+  const handleCaptcha = value => {
     setCaptcha(value);
   };
-  const handleFormChange = (e) => {
+  const handleFormChange = e => {
     setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
   };
   useEffect(() => {
@@ -93,38 +93,35 @@ export default function Signin() {
           <section className={style.signinContent}>
             <Navbar />
             {/* form */}
-            <form action='' className={style.signinForm}>
+            <form action="" className={style.signinForm}>
               <h1
                 className={classNames(
                   style.signinFormTitle,
                   'animate__animated animate__fadeInDown delay-200'
-                )}
-              >
+                )}>
                 {lang.title}
               </h1>
               <p
                 className={classNames(
                   style.signinFormSubtitle,
                   'animate__animated animate__fadeInDown delay-200 '
-                )}
-              >
-                {lang.subtitle} <Link to='/signup'>{lang.direct}</Link>{' '}
+                )}>
+                {lang.subtitle} <Link to="/signup">{lang.direct}</Link>{' '}
               </p>
               <div
                 className={classNames(
                   style.formItem,
                   'animate__animated animate__fadeInLeft delay-300'
-                )}
-              >
+                )}>
                 <legend>{lang.email}</legend>
                 <div className={style.formInput}>
                   <input
-                    type='text'
+                    type="text"
                     placeholder={lang.emailPlaceholder}
-                    name='email'
+                    name="email"
                     value={loginForm.email}
                     onChange={handleFormChange}
-                    autoComplete='username'
+                    autoComplete="username"
                   />
                   <MailIcon />
                 </div>
@@ -133,17 +130,16 @@ export default function Signin() {
                 className={classNames(
                   style.formItem,
                   'animate__animated animate__fadeInLeft delay-300'
-                )}
-              >
+                )}>
                 <legend>{lang.password}</legend>
                 <div className={style.formInput}>
                   <input
-                    type='password'
+                    type="password"
                     placeholder={lang.passwordPlaceholder}
                     value={loginForm.password}
-                    name='password'
+                    name="password"
                     onChange={handleFormChange}
-                    autoComplete='current-password'
+                    autoComplete="current-password"
                   />
                   <PasswordIcon />
                 </div>
@@ -152,21 +148,21 @@ export default function Signin() {
                 className={classNames(
                   style.formCheckbox,
                   'animate__animated animate__fadeInLeft delay-400'
-                )}
-              >
+                )}>
                 <Checkbox />
                 <span>{lang.checkbox}</span>
               </div>
               <ReCAPTCHA
-                sitekey='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                 onChange={handleCaptcha}
+                size="normal"
+                // style={style.reCAPTCHA}
               />
               {/* form buttons */}
               <span
                 className={
                   response.success ? 'response-success' : 'response-error'
-                }
-              >
+                }>
                 {response.message}
               </span>
               <button
@@ -174,13 +170,12 @@ export default function Signin() {
                   style.btnLogin,
                   'animate__animated animate__fadeInUp delay-400'
                 )}
-                onClick={handleFormSubmit}
-              >
+                onClick={handleFormSubmit}>
                 {loading ? (
                   <Lottie
                     {...unlockAnimation}
                     style={lottieStyle}
-                    className='animate__animated animate__zoomIn'
+                    className="animate__animated animate__zoomIn"
                   />
                 ) : (
                   lang.loginBtn
@@ -191,11 +186,10 @@ export default function Signin() {
                   style.btnReset,
                   'animate__animated animate__fadeInUp delay-500'
                 )}
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   navigate('/reset');
-                }}
-              >
+                }}>
                 {lang.reset}
               </button>
             </form>
@@ -206,8 +200,7 @@ export default function Signin() {
             className={classNames(
               style.signinContent,
               'animate__animated animate__slideInRight'
-            )}
-          >
+            )}>
             <KafLifeLogo
               className={classNames(
                 style.kafLogo,
@@ -216,11 +209,10 @@ export default function Signin() {
             />
             <div
               style={animationContainer}
-              className='animate__animated animate__zoomIn'
-            >
+              className="animate__animated animate__zoomIn">
               <Lottie
                 {...welcomeAnimation}
-                className='animate__animated animate__slideInRight'
+                className="animate__animated animate__slideInRight"
               />
             </div>
           </section>
