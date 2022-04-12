@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import style from './success.module.scss';
 import languages from 'constants/lang';
+import Lottie from 'lottie-react';
+import TaskComplete from 'assets/animations/TaskComplete.json';
 export default function SignupSuccess() {
   const navigate = useNavigate();
   const lang = useSelector(
@@ -23,10 +25,9 @@ export default function SignupSuccess() {
           )}
         >
           <KafLifeTextLogo className='animate__animated animate__fadeInLeft delay-200' />
-          <img
+          <Lottie
             className='animate__animated animate__fadeIn delay-300'
-            src={require('../../assets/images/success_image.png')}
-            alt='success!'
+            {...taskCompleteAnimation}
           />
           <h1 className='animate__animated animate__fadeInUp delay-300'>
             {lang.title}
@@ -49,3 +50,8 @@ export default function SignupSuccess() {
     </AnimatedBg>
   );
 }
+const taskCompleteAnimation = {
+  animationData: TaskComplete,
+  loop: true,
+  autoPlay: true,
+};

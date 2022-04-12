@@ -211,7 +211,7 @@ export default function Signin() {
               className='animate__animated animate__zoomIn'
             >
               <Lottie
-                {...animationOptions}
+                {...welcomeAnimation}
                 className='animate__animated animate__slideInRight'
               />
             </div>
@@ -222,7 +222,7 @@ export default function Signin() {
   );
 }
 
-const animationOptions = {
+const welcomeAnimation = {
   animationData: Welcome,
   loop: true,
   autoPlay: true,

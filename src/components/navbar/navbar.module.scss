@@ -1,4 +1,5 @@
 @import 'assets/style/_variables.module.scss';
+$item-count: 2;
 .navbarWrapper {
   display: flex;
   justify-content: space-between;
@@ -9,38 +10,75 @@
 
 .select {
   user-select: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
 }
 .options {
-  // display: none;
   position: absolute;
-  top: 45px;
+  padding-top: 10px;
+
   z-index: 100;
-  min-width: 110px;
+  width: 100%;
+  height: 100%;
+  background: #efefe3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  height: $item-count * 45px;
 }
 %option {
   cursor: pointer;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   font-size: 1rem;
   gap: 5px;
   font-family: handosoftRegular;
-  background: #efefe3;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 0.8rem;
   padding: 5px;
 }
+.radio,
+.radioSelected {
+  display: block;
+  width: 10px;
+  margin-inline: 5px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 2px #efefe3, 0px 0px 0px 4px $color-orange;
+  box-sizing: border-box;
+}
+.radio {
+  background: transparent;
+
+  &Selected {
+    background: $color-orange;
+  }
+}
 .head {
   @extend %option;
+  background: #efefe3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .option {
   @extend %option;
   margin-bottom: 5px;
 }
 .flag {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   svg {
     width: 25px;
     height: 13px;
+    path {
+      width: 25px;
+      aspect-ratio: 1;
+      height: 13px;
+    }
   }
+  width: max-content;
+  height: max-content;
 }
 @media (max-width: $tablet) {
   .navbarWrapper {

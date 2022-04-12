@@ -1,4 +1,4 @@
-import { KafLifeLogo } from 'assets/icons';
+import { KafLifeLogo, PasswordIcon, PhoneIcon } from 'assets/icons';
 import AnimatedBg from 'components/animatedbg';
 import Footer from 'components/footer';
 import Header from 'components/header';
@@ -14,7 +14,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { registerAction } from 'redux/actions/authAction';
 import { Checkbox } from 'components/checkbox';
 import languages from 'constants/lang';
-
+import OneStep from 'assets/animations/OneStep.json';
+import lottieBg from 'assets/images/lottiebg.png';
+import { MailIcon } from 'assets/icons';
 const FORM_INITIAL = {
   name: '',
   surname: '',
@@ -120,25 +122,31 @@ export default function Signup() {
               <aside className='animate__animated animate__fadeInLeft delay-300'>
                 <div className={style.formItem}>
                   <legend>{lang.email}</legend>
-                  <input
-                    name='email'
-                    className={style.formInput}
-                    type='text'
-                    placeholder={lang.emailPlaceholder}
-                    value={form.email}
-                    onChange={handleFormChange}
-                  />
+                  <div className={style.formInput}>
+                    <input
+                      type='text'
+                      placeholder={lang.emailPlaceholder}
+                      name='email'
+                      value={form.email}
+                      onChange={handleFormChange}
+                      autoComplete='username'
+                    />
+                    <MailIcon />
+                  </div>
                 </div>
                 <div className={style.formItem}>
                   <legend>{lang.phone}</legend>
-                  <input
-                    name='phone'
-                    className={style.formInput}
-                    type='text'
-                    placeholder={lang.phonePlaceholder}
-                    value={form.phone}
-                    onChange={handleFormChange}
-                  />
+                  <div className={style.formInput}>
+                    <input
+                      type='text'
+                      placeholder={lang.phonePlaceholder}
+                      name='phone'
+                      value={form.phone}
+                      onChange={handleFormChange}
+                      autoComplete='username'
+                    />
+                    <PhoneIcon />
+                  </div>
                 </div>
               </aside>
               <div
@@ -148,15 +156,18 @@ export default function Signup() {
                 )}
               >
                 <legend>{lang.password}</legend>
-                <input
-                  name='password'
-                  className={style.formInput}
-                  type='password'
-                  placeholder={lang.passwordPlaceholder}
-                  value={form.password}
-                  onChange={handleFormChange}
-                />
-              </div>{' '}
+                <div className={style.formInput}>
+                  <input
+                    type='password'
+                    placeholder={lang.password}
+                    name='password'
+                    value={form.password}
+                    onChange={handleFormChange}
+                    autoComplete='username'
+                  />
+                  <PasswordIcon />
+                </div>
+              </div>
               <div
                 className={classNames(
                   style.formItem,
@@ -164,15 +175,19 @@ export default function Signup() {
                 )}
               >
                 <legend>{lang.confirmPassword}</legend>
-                <input
-                  name='confirmPassword'
-                  className={style.formInput}
-                  type='password'
-                  placeholder={lang.confirmPasswordPlaceholder}
-                  value={form.confirmPassword}
-                  onChange={handleFormChange}
-                />
+                <div className={style.formInput}>
+                  <input
+                    type='password'
+                    placeholder={lang.confirmPasswordPlaceholder}
+                    name='confirmPassword'
+                    value={form.confirmPassword}
+                    onChange={handleFormChange}
+                    autoComplete='username'
+                  />
+                  <PasswordIcon />
+                </div>
               </div>
+
               <div
                 className={classNames(
                   style.formCheckbox,
@@ -215,7 +230,7 @@ export default function Signup() {
             )}
           >
             <Lottie
-              {...animationOptions}
+              {...cartAnimation}
               className={classNames(
                 style.signupLottie,
                 'animate_animated animate__fadeIn'
@@ -227,19 +242,24 @@ export default function Signup() {
                 'animate__animated animate__zoomIn'
               )}
             >
-              <h2 className='animate__animated animate__fadeInDown'>
-                {lang.cardTitle}
-              </h2>
-              <img
-                src={require('assets/images/signin_image.jpeg')}
-                alt='sign in KAF pay card'
-                className='animate__animated animate__slideInRight'
-              />
-              <p className='animate__animated animate__fadeInUp'>
-                {lang.cardDescription}
-                <Link to='/signin'>{lang.cardDirect}</Link>{' '}
-                {lang.descriptionEnd}
-              </p>
+              <div
+                style={animationContainer}
+                className={classNames(
+                  style.oneStep,
+                  'animate__animated animate__zoomIn'
+                )}
+              >
+                <h2 className='animate__animated animate__fadeInDown'>
+                  {lang.cardTitle}
+                </h2>
+                <Lottie {...oneStepAnimation} className={style.oneStepLottie} />
+
+                <p className='animate__animated animate__fadeInUp'>
+                  {lang.cardDescription}
+                  <Link to='/signin'>{lang.cardDirect}</Link>{' '}
+                  {lang.descriptionEnd}
+                </p>
+              </div>
             </div>
             <KafLifeLogo
               className={classNames(
@@ -254,8 +274,22 @@ export default function Signup() {
   );
 }
 
-const animationOptions = {
+const cartAnimation = {
   animationData: SigninLottie,
-  loop: false,
+  loop: true,
   autoPlay: true,
+};
+
+const oneStepAnimation = {
+  animationData: OneStep,
+  loop: true,
+  autoPlay: true,
+};
+const animationContainer = {
+  backgroundImage: `url(${lottieBg})`,
+  backgroundSize: 'contain',
+  backgroundPosition: 'center',
+  width: '100%',
+
+  backgroundRepeat: 'no-repeat',
 };

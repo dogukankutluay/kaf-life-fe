@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import languages from 'constants/lang';
 import style from './passwordconfirm.module.scss';
 import { useSelector } from 'react-redux';
+import Lottie from 'lottie-react';
+import PasswordConfirmAnimation from 'assets/animations/PasswordConfirmAnimation.json';
 export default function PasswordConfirm() {
   const navigate = useNavigate();
   const lang = useSelector(
@@ -23,10 +25,9 @@ export default function PasswordConfirm() {
           )}
         >
           <KafLifeTextLogo className='animate__animated animate__fadeInLeft delay-200' />
-          <img
-            src={require('../../assets/images/success_image.png')}
+          <Lottie
             className='animate__animated animate__fadeIn delay-300'
-            alt='success!'
+            {...passwordConfirmOptions}
           />
           <h1 className='animate__animated animate__fadeInUp delay-300'>
             {lang.title}
@@ -47,3 +48,8 @@ export default function PasswordConfirm() {
     </AnimatedBg>
   );
 }
+const passwordConfirmOptions = {
+  animationData: PasswordConfirmAnimation,
+  loop: true,
+  autoPlay: true,
+};

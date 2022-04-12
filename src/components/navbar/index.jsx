@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage } from 'redux/actions/preferencesAction';
-import './test.scss';
 export default function Navbar() {
   let activeLang = useSelector((state) => state.preferencesReducer.language);
   const [active, setActive] = useState(false);
@@ -32,13 +31,19 @@ export default function Navbar() {
         )}
         onClick={() => setActive(!active)}
       >
-        <div className={style.head}>
+        <div className={style.head} style={active ? toggleStyle : {}}>
+          <span className={style.radioSelected}></span>
           <span className={style.flag}>{languages[item].flag}</span>
           <p>{languages[item].lang}</p>
-          <ArrowDown />
+          <ArrowDown style={active ? arrowStyle : {}} />
         </div>
         {active && (
-          <ul className={classNames(style.options, style.animate)}>
+          <ul
+            className={classNames(
+              style.options,
+              'animate__animated animate__fadeIn 100'
+            )}
+          >
             {languages.map((language, key) => {
               return (
                 <li
@@ -51,6 +56,9 @@ export default function Navbar() {
                   key={key}
                   onClick={() => changeLanguage(key)}
                 >
+                  <span
+                    className={key === item ? style.radioSelected : style.radio}
+                  ></span>
                   <span className={style.flag}> {language.flag}</span>
                   {language.lang}
                 </li>
@@ -75,3 +83,12 @@ const languages = [
     code: 'en',
   },
 ];
+
+const toggleStyle = {
+  borderBottomLeftRadius: '0px',
+  borderBottomRightRadius: '0px',
+};
+
+const arrowStyle = {
+  transform: 'rotateX(180deg)',
+};

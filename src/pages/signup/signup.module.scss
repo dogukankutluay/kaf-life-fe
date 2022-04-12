@@ -38,23 +38,6 @@
         margin-top: auto;
       }
     }
-    &Card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #daf3fc;
-      font-family: handosoftMedium;
-      margin-top: auto;
-      color: $color-dark-green;
-      aspect-ratio: 1;
-      border-radius: 1.5rem;
-      padding: 3.5rem 3rem;
-      margin-bottom: 1rem;
-      a {
-        color: $color-blue;
-      }
-    }
   }
   &Form {
     display: flex;
@@ -113,6 +96,37 @@
     font-size: 1.125rem;
     font-family: handosoftRegular;
     margin-left: 0.5rem;
+  }
+}
+
+.oneStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: handosoftRegular;
+  margin-top: auto;
+  color: $color-dark-green;
+  aspect-ratio: 1;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+
+  h2,
+  p {
+    max-width: 75%;
+    text-align: center;
+  }
+  h2 {
+    font-family: handosoftBold;
+    font-size: 1.65rem;
+  }
+
+  a {
+    color: $color-blue;
+  }
+  &Lottie {
+    max-width: 80%;
   }
 }
 .btnCancel,
