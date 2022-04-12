@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AnimatedBg from 'components/animatedbg';
 import style from './signin.module.scss';
 import { KafLifeLogo, MailIcon, PasswordIcon } from 'assets/icons';
@@ -18,6 +18,7 @@ import { Checkbox } from 'components/checkbox';
 import Unlock from 'assets/animations/Unlock.json';
 import languages from 'constants/lang';
 import ReCAPTCHA from 'react-google-recaptcha';
+import Splash from 'components/splash';
 
 const FORM_INITIAL = {
   email: '',
@@ -32,6 +33,7 @@ export default function Signin() {
     (state) => languages[state.preferencesReducer.language].signin
   );
   document.title = lang.title;
+  const [splash, setSplash] = useState(true);
   const [loginForm, setLoginForm] = useState(FORM_INITIAL);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -76,6 +78,12 @@ export default function Signin() {
   const handleFormChange = (e) => {
     setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
   };
+  useEffect(() => {
+    setTimeout(() => setSplash(false), 1000);
+  }, []);
+  if (splash) {
+    return <Splash />;
+  }
   return (
     <AnimatedBg>
       <div className={style.signinWrapper}>
