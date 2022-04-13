@@ -81,6 +81,7 @@ export default function Signin() {
   useEffect(() => {
     setTimeout(() => setSplash(false), 1000);
   }, []);
+
   if (splash) {
     return <Splash />;
   }
