@@ -1,5 +1,6 @@
 // export const BASE_URL = 'http://3.145.30.11/api/v1/';
-export const BASE_URL = 'https://damp-mesa-92957.herokuapp.com/api/v1/';
+// export const BASE_URL = 'https://damp-mesa-92957.herokuapp.com/api/v1/';
+export const BASE_URL = 'https://life.kafpay.com/api/v1/';
 const METHODS = {
   GET: 'GET',
   POST: 'POST',
